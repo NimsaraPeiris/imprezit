@@ -61,11 +61,11 @@ export function AnimatedCursor() {
                 }}
             >
                 <div className={`
-                    rounded-full
-                    ${isPointer ? 'w-8 h-8' : 'w-6 h-6'}
-                    border-2 border-gray-500
+                    rounded-full bg-white/50
+                    ${isPointer ? 'w-8 h-8' : 'w-16 h-16'}
+                    border-2
                     transition-all duration-200
-                    ${isPointer ? 'bg-gray-100/20' : 'bg-transparent'}
+                    ${isPointer ? 'bg-gray' : 'bg-gray-200'}
                 `} />
             </div>
             <div
@@ -79,7 +79,7 @@ export function AnimatedCursor() {
                 <div className={`
                     rounded-full
                     ${isPointer ? 'w-2 h-2' : 'w-1 h-1'}
-                    bg-white
+                    bg-black
                     transition-all duration-200
                 `} />
             </div>
@@ -93,7 +93,7 @@ export function AnimatedCursor() {
             >
                 <div className={`
                     rounded-full w-3 h-3
-                    bg-green-500 opacity-50
+                    bg-black/50
                     transition-all duration-200
                     ${isPointer ? 'scale-150' : 'scale-100'}
                 `} />
