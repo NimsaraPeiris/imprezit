@@ -31,7 +31,7 @@ const Research = () => {
   });
 
   return (
-    <div className="pt-32">
+    <div className="pt-56">
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center bg-gradient-to-r from-gray-900 to-gray-800">
         <div className="container mx-auto px-6 relative z-10">
