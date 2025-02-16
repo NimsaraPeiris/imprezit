@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { Footer } from '../components/Footer';
 
 const Services = () => {
   const [ref, inView] = useInView({
@@ -84,6 +85,9 @@ const Services = () => {
           ))}
         </div>
       </div>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 };

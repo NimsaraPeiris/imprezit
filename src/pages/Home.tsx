@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useRef } from 'react';
 import { Particles } from '../components/Particles';
+import { Footer } from '../components/Footer';
 // Remove MeshNetwork import
 
 // Remove colors and getRandomColors as they're moved to Particles component
@@ -229,103 +230,9 @@ const Home = () => {
       </motion.section>
 
       {/* Footer Section */}
-      <motion.footer 
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        className="bg-gray-900 text-gray-300 py-16 relative z-10"
-      >
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-            {/* Company Info */}
-            <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-white">ImprezIT</h3>
-              <p className="text-gray-400">{footerContent.companyInfo.description}</p>
-              <div className="flex space-x-4">
-                {footerContent.companyInfo.social.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.url}
-                    className="text-2xl hover:text-primary-500 transition-colors"
-                    aria-label={item.name}
-                  >
-                    {item.icon}
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Quick Links */}
-            <div>
-              <h3 className="text-xl font-semibold text-white mb-6">Quick Links</h3>
-              <ul className="space-y-4">
-                {footerContent.quickLinks.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      to={link.url}
-                      className="hover:text-primary-500 transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Services */}
-            <div>
-              <h3 className="text-xl font-semibold text-white mb-6">Services</h3>
-              <ul className="space-y-4">
-                {footerContent.services.map((service) => (
-                  <li key={service.name}>
-                    <Link
-                      to={service.url}
-                      className="hover:text-primary-500 transition-colors"
-                    >
-                      {service.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Contact Info */}
-            <div>
-              <h3 className="text-xl font-semibold text-white mb-6">Contact Us</h3>
-              <ul className="space-y-4">
-                <li className="flex items-start space-x-3">
-                  <span>📍</span>
-                  <span>{footerContent.contact.address}</span>
-                </li>
-                <li className="flex items-center space-x-3">
-                  <span>📧</span>
-                  <a
-                    href={`mailto:${footerContent.contact.email}`}
-                    className="hover:text-primary-500 transition-colors"
-                  >
-                    {footerContent.contact.email}
-                  </a>
-                </li>
-                <li className="flex items-center space-x-3">
-                  <span>📱</span>
-                  <a
-                    href={`tel:${footerContent.contact.phone}`}
-                    className="hover:text-primary-500 transition-colors"
-                  >
-                    {footerContent.contact.phone}
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-800 mt-12 pt-8 text-center">
-            <p className="text-gray-400">
-              © {new Date().getFullYear()} ImprezIT. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </motion.footer>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 };
