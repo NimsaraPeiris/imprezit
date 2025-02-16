@@ -1,115 +1,114 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { useRef } from 'react';
+import { Particles } from '../components/Particles';
+// Remove MeshNetwork import
 
-const colors = [
-  'rgb(255, 255, 255)', // blue-500
-  'rgb(221, 126, 250)', // emerald-500
-  'rgb(255, 255, 255)', // pink-500
-  'rgb(65, 169, 253)', // violet-500
-  'rgb(11, 140, 245)', // amber-500
+// Remove colors and getRandomColors as they're moved to Particles component
+
+const bentoItems = [
+  {
+    title: 'Web Development',
+    description: 'Custom web applications and responsive designs',
+    color: 'from-blue-500 to-cyan-500',
+    span: 'col-span-2'
+  },
+  {
+    title: 'Mobile Apps',
+    description: 'Native and cross-platform mobile solutions',
+    color: 'from-purple-500 to-pink-500'
+  },
+  {
+    title: 'Cloud Solutions',
+    description: 'Scalable cloud infrastructure and services',
+    color: 'from-orange-500 to-red-500'
+  },
+  {
+    title: 'AI Integration',
+    description: 'Smart solutions powered by artificial intelligence',
+    color: 'from-green-500 to-emerald-500',
+    span: 'row-span-2'
+  },
+  {
+    title: 'Cybersecurity',
+    description: 'Advanced security measures and protocols',
+    color: 'from-yellow-500 to-orange-500'
+  }
 ];
 
-const getRandomColors = () => {
-  const shuffled = [...colors].sort(() => Math.random() - 0.5);
-  return shuffled;
-};
-
 const Home = () => {
-  useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollY } = useScroll();
+  const heroOpacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const heroTranslateY = useTransform(scrollY, [0, 300], [0, -100]);
+  const heroScale = useTransform(scrollY, [0, 300], [1, 1.5]);
+  const bentoOpacity = useTransform(scrollY, [100, 400], [0, 1]);
+  const bentoTranslateY = useTransform(scrollY, [100, 400], [100, 0]);
 
   return (
-    <>
-      <div className="pt-0">
-        {/* Hero Section with Interactive Background */}
-        <section className="relative min-h-screen flex items-center overflow-hidden bg-white">
-          {/* hero-gradient */}
-          <div className="absolute inset-0">
-            {[...Array(20)].map((_, i) => {
-              const particleColors = getRandomColors();
-              return (
-                <motion.div
-                  key={i}
-                  className="absolute h-16 w-16 rounded-full cursor-pointer"
-                  initial={{
-                    x: Math.random() * window.innerWidth,
-                    y: Math.random() * window.innerHeight,
-                  }}
-                  animate={{
-                    x: [
-                      Math.random() * window.innerWidth,
-                      Math.random() * window.innerWidth,
-                      Math.random() * window.innerWidth,
-                    ],
-                    y: [
-                      Math.random() * window.innerHeight,
-                      Math.random() * window.innerHeight,
-                      Math.random() * window.innerHeight,
-                    ],
-                    backgroundColor: particleColors,
-                  }}
-                  transition={{
-                    x: {
-                      duration: Math.random() * 20 + 15,
-                      repeat: Infinity,
-                      repeatType: "mirror",
-                      ease: "anticipate"
-                    },
-                    y: {
-                      duration: Math.random() * 20 + 15,
-                      repeat: Infinity,
-                      repeatType: "mirror",
-                      ease: "anticipate"
-                    },
-                    backgroundColor: {
-                      duration: 10,
-                      repeat: Infinity,
-                      repeatType: "reverse",
-                    }
-                  }}
-                  style={{
-                    position: 'fixed',
-                    backgroundColor: particleColors[0],
-                  }}
-                />
-              );
-            })}
-          </div>
-          
-          <div className="container mx-auto px-6 relative z-10">
+    <div className="pt-0" ref={containerRef}>
+      <motion.section 
+        style={{ opacity: heroOpacity, y: heroTranslateY }}
+        className="relative min-h-screen flex items-center overflow-hidden bg-WHITE"
+      >
+        <Particles />
+        
+        <div className="container mx-auto px-6 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            style={{ scale: heroScale }} // Add scale transform to content
+            transition={{ duration: 0.8 }}
+            className="text-center"
+          >
+            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+              Innovate. Transform.{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500">
+                Succeed.
+              </span>
+            </h1>
+            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+              Empowering businesses with cutting-edge solutions for a digital future.
+            </p>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-                Innovate. Transform.{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500">
-                  Succeed.
-                </span>
-              </h1>
-              <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-                Empowering businesses with cutting-edge solutions for a digital future.
-              </p>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              <Link
+                to="/services"
+                className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-8 py-3 rounded-full text-lg font-semibold hover:opacity-90 transition-all duration-300 inline-block"
               >
-                <a
-                  href="#contact"
-                  className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-primary-700 transition-colors duration-300"
-                >
-                  Get Started
-                </a>
-              </motion.div>
+                Get Started
+              </Link>
             </motion.div>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Bento Grid Section */}
+      <motion.section
+        style={{ opacity: bentoOpacity, y: bentoTranslateY }}
+        className="min-h-screen py-20 px-6 bg-gray-100"
+      >
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-12">Our Solutions</h2>
+          <div className="grid grid-cols-3 gap-6 auto-rows-[200px]">
+            {bentoItems.map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className={`rounded-3xl p-8 bg-gradient-to-r ${item.color} ${item.span || ''} text-white hover:scale-[1.02] transition-transform cursor-pointer`}
+              >
+                <h3 className="text-2xl font-bold mb-4">{item.title}</h3>
+                <p className="text-lg opacity-90">{item.description}</p>
+              </motion.div>
+            ))}
           </div>
-        </section>
-      </div>
-    </>
+        </div>
+      </motion.section>
+    </div>
   );
 };
 

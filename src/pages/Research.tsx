@@ -31,9 +31,9 @@ const Research = () => {
   });
 
   return (
-    <div className="pt-56">
+    <div className="pt-0"> {/* Changed from pt-56 to pt-0 to match Home page */}
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center bg-gradient-to-r from-gray-900 to-gray-800">
+      <section className="relative min-h-screen flex items-center bg-gradient-to-r from-gray-900 to-gray-800">
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
