@@ -292,7 +292,7 @@ const About = () => {
                   <img
                     src={blog.image}
                     alt={blog.title}
-                    className="absolute transition-all duration-300 group-hover:scale-110 group-hover:opacity-50 object-cover w-full h-full"
+                    className="absolute transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 object-cover w-full h-full"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                   <div className="relative flex h-full w-full flex-col justify-end p-6 text-white">

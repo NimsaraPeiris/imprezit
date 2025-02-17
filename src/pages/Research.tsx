@@ -1,22 +1,62 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Footer } from '../components/Footer';
+import { ExpandableCards } from '../components/ui/expandable-card';
 
 const researchAreas = [
   {
     title: 'AI & Machine Learning',
-    description: 'Advancing the boundaries of artificial intelligence through deep learning, natural language processing, and computer vision. Our research focuses on practical business applications and ethical AI development.',
-    icon: '🤖'
+    description: 'Advancing the boundaries of artificial intelligence',
+    icon: '🤖',
+    image: '/images/research/ai.jpg',
+    ctaText: 'Learn More',
+    ctaLink: '#',
+    content: `Our AI & Machine Learning research focuses on developing practical business applications 
+    through deep learning, natural language processing, and computer vision. We're committed to 
+    advancing the field while ensuring ethical AI development practices.
+    
+    Key Areas:
+    • Deep Learning Architectures
+    • Natural Language Processing
+    • Computer Vision Systems
+    • Ethical AI Development
+    • Business Intelligence Integration`
   },
   {
     title: 'Cloud Computing',
-    description: 'Exploring next-generation cloud architectures, serverless computing, and edge computing solutions. We focus on optimization, security, and scalability for enterprise applications.',
-    icon: '☁️'
+    description: 'Next-generation cloud architectures',
+    icon: '☁️',
+    image: '/images/research/cloud.jpg',
+    ctaText: 'Learn More',
+    ctaLink: '#',
+    content: `We're exploring innovative approaches to cloud computing, focusing on serverless 
+    architectures and edge computing solutions. Our research aims to optimize performance, enhance 
+    security, and improve scalability for enterprise applications.
+    
+    Focus Areas:
+    • Serverless Computing
+    • Edge Computing
+    • Cloud Security
+    • Performance Optimization
+    • Distributed Systems`
   },
   {
     title: 'Quantum Computing',
-    description: 'Investigating quantum algorithms, quantum cryptography, and quantum machine learning. Preparing for the future of computing with quantum-ready solutions and protocols.',
-    icon: '⚛️'
+    description: 'Preparing for the quantum future',
+    icon: '⚛️',
+    image: '/images/research/quantum.jpg',
+    ctaText: 'Learn More',
+    ctaLink: '#',
+    content: `Our quantum computing research investigates the potential of quantum algorithms and their 
+    applications in cryptography and machine learning. We're working to prepare businesses for the 
+    quantum computing revolution.
+    
+    Research Areas:
+    • Quantum Algorithms
+    • Quantum Cryptography
+    • Quantum Machine Learning
+    • Error Correction
+    • Quantum-Safe Security`
   }
 ];
 
@@ -60,12 +100,12 @@ const Research = () => {
         </div>
       </motion.section>
 
-      {/* Research Areas Section */}
-      <section ref={ref} className="py-20 bg-white">
+      {/* Research Areas Section with Expandable Cards */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
@@ -77,36 +117,7 @@ const Research = () => {
             </p>
           </motion.div>
 
-          <div className="max-w-4xl mx-auto space-y-8">
-            {researchAreas.map((area, index) => (
-              <motion.div
-                key={area.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="group relative h-48 bg-white rounded-lg border border-gray-200 overflow-hidden cursor-pointer"
-              >
-                {/* Title Container - Centered by default, moves left on hover */}
-                <div className="absolute inset-0 flex items-center justify-center transition-transform duration-500 ease-in-out group-hover:translate-x-0 group-hover:justify-start">
-                  <div className="flex items-center gap-4 px-6 group-hover:w-[30%]">
-                    <span className="text-4xl">{area.icon}</span>
-                    <h3 className="text-xl font-bold text-gray-900 whitespace-nowrap">
-                      {area.title}
-                    </h3>
-                  </div>
-                </div>
-
-                {/* Description Container - Hidden by default, appears from right */}
-                <div 
-                  className="absolute right-0 inset-y-0 w-[70%] flex items-center p-6 bg-white translate-x-full transition-all duration-500 ease-in-out group-hover:translate-x-0"
-                >
-                  <p className="text-gray-600 leading-relaxed">
-                    {area.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          <ExpandableCards cards={researchAreas} />
         </div>
       </section>
       <Footer />
