@@ -10,9 +10,10 @@ type CardProps = {
     index: number;
     hovered: number | null;
     setHovered: React.Dispatch<React.SetStateAction<number | null>>;
+    className?: string;
 };
 
-const Card = React.memo(({ card, index, hovered, setHovered }: CardProps) => (
+const Card = React.memo(({ card, index, hovered, setHovered, className = "" }: CardProps) => (
     <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -21,7 +22,8 @@ const Card = React.memo(({ card, index, hovered, setHovered }: CardProps) => (
         onMouseLeave={() => setHovered(null)}
         className={cn(
             "relative bg-gray-100 dark:bg-neutral-900 overflow-hidden h-80 md:h-[500px] rounded-lg transition-all duration-300 ease-out",
-            hovered !== null && hovered !== index && "blur-sm scale-[0.98]"
+            hovered !== null && hovered !== index && "blur-sm scale-[0.98]",
+            className
         )}
     >
         <div
@@ -52,7 +54,7 @@ export function FocusCards({ cards }: { cards: Card[] }) {
     const [hovered, setHovered] = useState<number | null>(null);
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto md:px-8 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-20 max-w-7xl mx-auto md:px-8 w-full">
             {cards.map((card, index) => (
                 <Card
                     key={card.title}
@@ -60,6 +62,8 @@ export function FocusCards({ cards }: { cards: Card[] }) {
                     index={index}
                     hovered={hovered}
                     setHovered={setHovered}
+                    className={index === cards.length - 1 && cards.length % 3 !== 0 ? 
+                        "md:col-start-2" : ""}
                 />
             ))}
         </div>

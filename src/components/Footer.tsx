@@ -41,7 +41,7 @@ export const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
                     {/* Company Info */}
                     <div className="space-y-6">
-                        <h3 className="text-2xl font-bold text-white">ImprezIT</h3>
+                        <h3 className="text-7xl font-bold text-white">Imprezit</h3>
                         <p className="text-gray-400">{footerContent.companyInfo.description}</p>
                         <div className="flex space-x-4">
                             {footerContent.companyInfo.social.map((item) => (

@@ -42,22 +42,19 @@ const whatWeCanDo = [
     title: 'Digital Transformation',
     description: 'Transform your business with cutting-edge digital solutions and strategies.',
     icon: '🚀',
-    baseTheme: 'from-blue-400 to-blue-600',
-    hoverTheme: 'from-primary-400 to-primary-600'
+    gradient: 'from-primary-500 to-secondary-500'  // Updated gradient
   },
   {
     title: 'Custom Development',
     description: 'Build tailored software solutions that perfectly match your needs.',
     icon: '💻',
-    baseTheme: 'from-primary-400 to-primary-600',
-    hoverTheme: 'from-secondary-400 to-secondary-600'
+    gradient: 'from-blue-500 to-indigo-500'  // Updated gradient
   },
   {
     title: 'Technical Consulting',
     description: 'Expert guidance on technology decisions and implementation.',
     icon: '🎯',
-    baseTheme: 'from-secondary-400 to-secondary-600',
-    hoverTheme: 'from-blue-400 to-blue-600'
+    gradient: 'from-purple-500 to-pink-500'  // Updated gradient
   }
 ];
 
@@ -221,42 +218,55 @@ const Home = () => {
         </motion.div>
       </motion.section>
 
-      {/* What We Can Do Section - Updated */}
+      {/* What We Can Do Section */}
       <motion.section
         style={{ opacity: whatWeCanDoOpacity, y: whatWeCanDoTranslateY }}
-        className="py-32 bg-gray-50 relative z-10"
+        className="py-40 bg-gray-50 relative z-10"
       >
         <div className="container mx-auto px-6">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl font-bold text-center text-gray-900 mb-24"
+            className="text-4xl font-bold text-center text-gray-900 mb-40"
           >
             What We Can Do
           </motion.h2>
           
-          <div className="flex flex-wrap justify-center gap-16">
+          <div className="flex flex-wrap justify-center gap-52">
             {whatWeCanDo.map((item, index) => (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, scale: 0.5 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group relative"
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                className="relative"
               >
                 <motion.div
-                  className={`w-80 h-80 rounded-full flex flex-col items-center justify-center p-12 text-center text-white transition-all duration-500 bg-gradient-to-br ${item.baseTheme} group-hover:${item.hoverTheme} shadow-lg group-hover:shadow-2xl`}
-                  whileHover={{ scale: 1.05 }}
+                  className="w-[32rem] h-[32rem] rounded-full flex flex-col items-center justify-center p-16 text-center bg-white relative overflow-hidden group"
+                  whileHover={{ scale: 1.02 }}
                 >
-                  <span className="text-6xl mb-6">{item.icon}</span>
-                  <h3 className="text-2xl font-bold mb-4">{item.title}</h3>
-                  <p className="text-sm opacity-90 max-w-[200px]">
-                    {item.description}
-                  </p>
+                  {/* Gradient overlay that fills from bottom */}
+                  <div 
+                    className={`absolute inset-0 bg-gradient-to-r ${item.gradient}
+                    transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out`}
+                  />
+                  
+                  {/* Content container */}
+                  <div className="relative z-10">
+                    <span className="text-8xl mb-10 text-gray-800 group-hover:text-white transition-colors duration-500">
+                      {item.icon}
+                    </span>
+                    <h3 className={`pt-16 text-4xl font-bold mb-8 bg-gradient-to-br ${item.gradient} bg-clip-text text-transparent
+                      group-hover:text-white transition-colors duration-500`}
+                    >
+                      {item.title}
+                    </h3>
+                    <p className="text-xl text-gray-600 group-hover:text-white transition-colors duration-500 max-w-[320px]">
+                      {item.description}
+                    </p>
+                  </div>
                 </motion.div>
-                {/* Decorative ring */}
-                <div className="absolute -inset-4 rounded-full border-2 border-dashed border-gray-200 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </motion.div>
             ))}
           </div>
