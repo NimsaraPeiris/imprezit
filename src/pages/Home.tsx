@@ -199,7 +199,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-9xl font-bold text-center text-gray-900 mb-20"
+            className="text-4xl md:text-7xl font-bold text-center text-gray-900 mb-20"
           >
             What We Can Do
           </motion.h2>
@@ -214,7 +214,7 @@ const Home = () => {
                 className="relative"
               >
                 <motion.div
-                  className="w-[32rem] h-[32rem] rounded-full flex flex-col items-center justify-center p-16 text-center bg-white relative overflow-hidden group"
+                  className="w-[18rem] h-[32rem] rounded-full flex flex-col items-center justify-center p-16 text-center bg-white relative overflow-hidden group shadow-xl"
                   whileHover={{ scale: 1.02 }}
                 >
                   {/* Gradient overlay that fills from bottom */}
@@ -250,7 +250,7 @@ const Home = () => {
         className="min-h-screen py-20 px-6 bg-gray-100"
       >
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-9xl font-bold text-center mb-20">Highlights</h2>
+          <h2 className="text-4xl md:text-7xl font-bold text-center mb-20">Highlights</h2>
           <div className="grid grid-cols-2 gap-6 auto-rows-[150px]">
             {bentoItems.map((item, index) => (
               <motion.div

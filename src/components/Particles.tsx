@@ -42,7 +42,7 @@ export const Particles = () => {
                 if (heroHovered) return particle;
 
                 // Reduce base moving speed
-                const baseSpeed = particle.speed * 0.5;
+                const baseSpeed = particle.speed * 0.3;
                 const nextX = particle.x + Math.cos(particle.angle) * baseSpeed;
                 const nextY = particle.y + Math.sin(particle.angle) * baseSpeed;
                 const dx = cursor.x - nextX;
@@ -52,10 +52,10 @@ export const Particles = () => {
                 let newY = nextY;
                 let newAngle = particle.angle;
                 
-                if (distance < 150) {
+                if (distance < 250) {
                     newAngle = Math.atan2(dy, dx) + Math.PI;
                     // Increase the throwing repulsion speed
-                    const throwingSpeed = particle.speed * 2.5;
+                    const throwingSpeed = particle.speed * 1;
                     newX = particle.x + Math.cos(newAngle) * throwingSpeed;
                     newY = particle.y + Math.sin(newAngle) * throwingSpeed;
                 }
@@ -98,7 +98,7 @@ export const Particles = () => {
                         opacity: { duration: 0.5 },
                         scale: { duration: 0.5 },
                         backgroundColor: {
-                            duration: 8,
+                            duration: 20,
                             repeat: Infinity,
                             repeatType: "reverse",
                             ease: "anticipate"
