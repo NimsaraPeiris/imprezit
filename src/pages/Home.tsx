@@ -101,13 +101,13 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-gray-900 mb-6">
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-gray-900 mb-6 select-none">
               Innovate. Transform.{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500">
                 Succeed.
               </span>
             </h1>
-            <p className="text-xl md:text-2xl lg:text-3xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl lg:text-3xl text-gray-600 mb-8 max-w-2xl mx-auto select-none">
               Empowering businesses with cutting-edge solutions for a digital future.
             </p>
             <motion.div
