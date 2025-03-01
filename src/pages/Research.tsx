@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+// Remove unused import
+// import { useInView } from 'react-intersection-observer';
 import { Footer } from '../components/Footer';
 import { ExpandableCards } from '../components/ui/expandable-card';
 
@@ -61,10 +62,11 @@ const researchAreas = [
 ];
 
 const Research = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
+  // Remove or comment out the following line if not needed
+  // const [ref, inView] = useInView({
+  //   threshold: 0.5,
+  //   triggerOnce: true,
+  // });
 
   // Add scroll animations
   const { scrollY } = useScroll();

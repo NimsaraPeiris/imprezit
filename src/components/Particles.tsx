@@ -82,7 +82,7 @@ export const Particles = () => {
             {positions.map((pos, i) => (
                 <motion.div
                     key={i}
-                    className="absolute h-8 w-8"
+                    className="absolute h-16 w-16 rounded-full"
                     style={{
                         x: pos.x,
                         y: pos.y,

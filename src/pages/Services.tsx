@@ -4,43 +4,10 @@ import { Footer } from '../components/Footer';
 import { FocusCards } from '../components/ui/focus-cards';
 
 const Services = () => {
-  const [ref, inView] = useInView({
+  const [_, __] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
-
-  const services = [
-    {
-      title: "Digital Transformation",
-      description: "Modernize your business with cutting-edge digital solutions",
-      features: [
-        "Legacy System Modernization",
-        "Cloud Migration",
-        "Process Automation",
-        "Digital Strategy Consulting"
-      ]
-    },
-    {
-      title: "Custom Software Development",
-      description: "Tailored software solutions to meet your unique needs",
-      features: [
-        "Web Applications",
-        "Mobile Apps",
-        "Enterprise Software",
-        "API Integration"
-      ]
-    },
-    {
-      title: "Data Analytics",
-      description: "Transform your data into actionable insights",
-      features: [
-        "Business Intelligence",
-        "Predictive Analytics",
-        "Data Visualization",
-        "Real-time Analytics"
-      ]
-    }
-  ];
 
   const focusCards = [
     {

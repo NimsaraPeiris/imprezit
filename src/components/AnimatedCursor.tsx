@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 export function AnimatedCursor() {
     const [position, setPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
