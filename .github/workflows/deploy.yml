@@ -29,7 +29,9 @@ jobs:
         run: npm run build
 
       - name: Debug Build Output
-        run: ls -la ./dist 
+        run: |
+          echo "Checking if dist folder exists..."
+          ls -la ./dist || echo "No dist folder found!"
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
