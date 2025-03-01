@@ -4,7 +4,24 @@ export function AnimatedCursor() {
     const [position, setPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
     const [trailingPosition, setTrailingPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
     const [isPointer, setIsPointer] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
     const animationFrameRef = useRef<number | null>(null);
+
+    useEffect(() => {
+        // Check if device is mobile
+        const checkMobile = () => {
+            const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            const isCoarseMouse = window.matchMedia('(pointer: coarse)').matches;
+            const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            setIsMobile(isTouchDevice || isCoarseMouse || isMobileUA);
+        };
+
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     useEffect(() => {
         const onMouseMove = (e: MouseEvent) => {
@@ -49,6 +66,9 @@ export function AnimatedCursor() {
             }
         };
     }, [position]);
+
+    // Don't render cursor on mobile devices
+    if (isMobile) return null;
 
     return (
         <>

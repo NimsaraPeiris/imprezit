@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Prevent overflow on mobile */
+  @media (max-width: 768px) {
+    html, body {
+      overflow-x: hidden;
+      position: relative;
+      width: 100%;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    body {
+      height: 100%;
+      position: fixed;
+      overflow-y: auto;
+    }
+
+    #root {
+      min-height: 100vh;
+      isolation: isolate;
+    }
+  }
+
+  /* Comprehensive mobile cursor handling */
+  @media (hover: none), (pointer: coarse) {
+    * {
+      cursor: auto !important;
+    }
+    
+    .animated-cursor,
+    .cursor-container,
+    [data-cursor] {
+      display: none !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      visibility: hidden !important;
+    }
+
+    /* Restore default touch behavior */
+    a, button, [role="button"] {
+      -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+      cursor: pointer !important;
+    }
+  }
+}
