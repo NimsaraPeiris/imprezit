@@ -45,7 +45,7 @@ const Navbar = () => {
               Home
             </Link>
             <Link to="/services" className="nav-link text-lg xl:text-2xl font-medium">
-              What We Do
+              Our Services
             </Link>
             <Link to="/about" className="nav-link text-lg xl:text-2xl font-medium">
               About Us

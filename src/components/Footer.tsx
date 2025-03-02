@@ -45,7 +45,7 @@ export const Footer = () => {
             <div className="container mx-auto px-6">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
                     {/* Company Info */}
-                    <div className="space-y-6">
+                    <div className="space-y-6 ml-4">
                         <h3 className="text-7xl font-bold text-white">Imprezit</h3>
                         <p className="text-gray-400">{footerContent.companyInfo.description}</p>
                         {/* <div className="flex space-x-4">
@@ -71,7 +71,7 @@ export const Footer = () => {
                     </div>
 
                     {/* Quick Links */}
-                    <div>
+                    <div className='ml-4 md:ml-32'>
                         <h3 className="text-xl font-semibold text-white mb-6">Quick Links</h3>
                         <ul className="space-y-4">
                             {footerContent.quickLinks.map((link) => (
@@ -88,7 +88,7 @@ export const Footer = () => {
                     </div>
 
                     {/* Services */}
-                    <div>
+                    <div className='ml-4 md:ml-32'>
                         <h3 className="text-xl font-semibold text-white mb-6">Services</h3>
                         <ul className="space-y-4">
                             {footerContent.services.map((service) => (
@@ -105,30 +105,23 @@ export const Footer = () => {
                     </div>
 
                     {/* Contact Info */}
-                    <div>
-                        <h3 className="text-xl font-semibold text-white mb-6">Contact Us</h3>
+                    <div className='ml-4 md:ml-32'>
+                        {/* <h3 className="text-xl font-semibold text-white mb-6">Contact Us</h3> */}
                         <ul className="space-y-4">
-                            <li className="flex items-start space-x-3">
-                                <span>📍</span>
-                                <span>{footerContent.contact.address}</span>
+                            <li className="flex items-start space-x-3 pt-12">
+                                <Link to="/services#ai" className="hover:text-primary-500 transition-colors">
+                                    Artificial Intelligence
+                                </Link>
                             </li>
                             <li className="flex items-center space-x-3">
-                                <span>📧</span>
-                                <a
-                                    href={`mailto:${footerContent.contact.email}`}
-                                    className="hover:text-primary-500 transition-colors"
-                                >
-                                    {footerContent.contact.email}
-                                </a>
+                                <Link to="/services#digitization" className="hover:text-primary-500 transition-colors">
+                                    Business Digitization
+                                </Link>
                             </li>
                             <li className="flex items-center space-x-3">
-                                <span>📱</span>
-                                <a
-                                    href={`tel:${footerContent.contact.phone}`}
-                                    className="hover:text-primary-500 transition-colors"
-                                >
-                                    {footerContent.contact.phone}
-                                </a>
+                                <Link to="/services#consultation" className="hover:text-primary-500 transition-colors">
+                                    Technical & Business Consultation
+                                </Link>
                             </li>
                         </ul>
                     </div>

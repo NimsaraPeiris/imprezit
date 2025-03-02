@@ -60,13 +60,16 @@ const researchAreas = [
   }
 ];
 
-const Research = () => {
-  // Remove or comment out the following line if not needed
-  // const [ref, inView] = useInView({
-  //   threshold: 0.5,
-  //   triggerOnce: true,
-  // });
+const keyResearchAreas = [
+  { title: 'Artificial Intelligence', icon: '🤖' },
+  { title: 'Ed Tech', icon: '📚' },
+  { title: 'Health Tech', icon: '🏥' },
+  { title: 'Community-Centered Tech', icon: '🌍' },
+  { title: 'Quantum Computing', icon: '⚛️' },
+  { title: 'Business Digitization', icon: '💼' }
+];
 
+const Research = () => {
   // Add scroll animations
   const { scrollY } = useScroll();
   const heroOpacity = useTransform(scrollY, [0, 300], [1, 0]);
@@ -76,8 +79,8 @@ const Research = () => {
   return (
     <div className="pt-0 overflow-hidden"> {/* Added overflow-hidden here */}
       {/* Hero Section - Updated with scroll effects */}
-      <motion.section 
-        style={{ 
+      <motion.section
+        style={{
           opacity: heroOpacity,
           scale: heroScale,
           y: heroTranslateY
@@ -91,15 +94,31 @@ const Research = () => {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-8xl font-bold text-white mb-6">
+            <h1 className="md:text-8xl text-3xl font-bold text-white mb-8">
               Research & Development
             </h1>
-            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Pushing the boundaries of technology through innovative research and development
+            <p className="text-xl md:text-2xl lg:text-3xl text-gray-400 mb-8 mx-auto select-none">
+              Pushing the boundaries of technology through innovative research and development
             </p>
           </motion.div>
         </div>
       </motion.section>
+
+      <section className="py-16 bg-gray-100 text-center">
+        <div className="container mx-auto px-6">
+          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r pb-4 from-primary-500 to-secondary-500 bg-clip-text text-transparent">
+            Our Key Research Areas
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {keyResearchAreas.map((area, index) => (
+              <div key={index} className="p-6 bg-white rounded-xl shadow-md flex flex-col items-center">
+                <div className="text-5xl mb-4">{area.icon}</div>
+                <h3 className="text-xl font-semibold text-gray-800">{area.title}</h3>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Research Areas Section with Expandable Cards */}
       <section className="py-20 bg-white">
@@ -110,12 +129,20 @@ const Research = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Research Areas
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Exploring the frontiers of technology to create innovative solutions
-            </p>
+            <motion.section
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="mb-16 text-center px-6"
+            >
+              <div className="max-w-4xl mx-auto">
+                <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r pb-4 from-primary-500 to-secondary-500 bg-clip-text text-transparent">
+                  Ongoing Research Projects
+
+                </h2>
+              </div>
+            </motion.section>
+
           </motion.div>
 
           <ExpandableCards cards={researchAreas} />

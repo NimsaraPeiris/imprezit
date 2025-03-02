@@ -3,40 +3,6 @@ import { Link } from 'react-router-dom';
 import { useRef } from 'react';
 import { Particles } from '../components/Particles';
 import { Footer } from '../components/Footer';
-// Remove MeshNetwork import
-
-// Remove colors and getRandomColors as they're moved to Particles component
-
-const bentoItems = [
-  {
-    title: 'Web Development',
-    description: 'Custom web applications and responsive designs',
-    color: 'from-blue-500 to-cyan-500',
-    span: 'col-span-2'
-  },
-  {
-    title: 'Mobile Apps',
-    description: 'Native and cross-platform mobile solutions',
-    color: 'from-purple-500 to-pink-500'
-  },
-  {
-    title: 'Cloud Solutions',
-    description: 'Scalable cloud infrastructure and services',
-    color: 'from-orange-500 to-red-500'
-  },
-  {
-    title: 'AI Integration',
-    description: 'Smart solutions powered by artificial intelligence',
-    color: 'from-green-500 to-emerald-500',
-    span: 'row-span-1'
-  },
-  {
-    title: 'Cybersecurity',
-    description: 'Advanced security measures and protocols',
-    color: 'from-yellow-500 to-orange-500',
-    // span: 'col-span-1'
-  }
-];
 
 const whatWeCanDo = [
   {
@@ -59,14 +25,71 @@ const whatWeCanDo = [
   }
 ];
 
+const blogs = [
+  {
+    id: 1,
+    title: '1st Runner Up at the Alliance of Masterminds Hackathon',
+    author: 'Michael Jordan',
+    date: '00.00.2024',
+    image: './public/images/achivements/gen2.jpeg',
+    avatar: 'https://i.pravatar.cc/150?img=1',
+    link: '/',
+  },
+  {
+    id: 2,
+    title: '1st runner-up at IEEE INSL',
+    author: 'Jane Doe',
+    date: '02.03.2024',
+    image: './public/images/achivements/1st-RUP-INSL.jpeg',
+    avatar: 'https://i.pravatar.cc/150?img=2',
+    link: '/',
+  },
+  {
+    id: 3,
+    title: 'IdeaniX winners by IEEE SLTC',
+    author: 'John Smith',
+    date: '18.03.2021',
+    image: './public/images/achivements/Winners-IDEANIX.jpeg',
+    avatar: 'https://i.pravatar.cc/150?img=3',
+    link: '/',
+  },
+  {
+    id: 4,
+    title: 'Unipreneur\'s Impact Challenge Finalists',
+    author: 'Alice Johnson',
+    date: '24.12.2024',
+    image: './public/images/achivements/Palladian.png',
+    avatar: 'https://i.pravatar.cc/150?img=4',
+    link: '/',
+  },
+  {
+    id: 5,
+    title: '1st runner-up at IEEE INSL',
+    author: 'Robert Brown',
+    date: '02.11.2024',
+    image: './public/images/achivements/1st-RUP-G_ALFA.jpg',
+    avatar: 'https://i.pravatar.cc/150?img=5',
+    link: '/',
+  },
+  {
+    id: 6,
+    title: 'soon',
+    author: 'Robert Brown',
+    date: '02.11.2024',
+    image: './public/images/achivements/y1.jpeg',
+    avatar: 'https://i.pravatar.cc/150?img=5',
+    link: '/',
+  },
+];
+
+
+
 const Home = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
   const heroOpacity = useTransform(scrollY, [0, 300], [1, 0]);
   const heroTranslateY = useTransform(scrollY, [0, 300], [0, -100]);
   const heroScale = useTransform(scrollY, [0, 300], [1, 1.5]);
-  const bentoOpacity = useTransform(scrollY, [100, 400], [0, 1]);
-  const bentoTranslateY = useTransform(scrollY, [100, 400], [100, 0]);
   const descriptionOpacity = useTransform(scrollY, [50, 300], [0, 1]);
   const descriptionTranslateY = useTransform(scrollY, [50, 300], [100, 0]);
   const whatWeCanDoOpacity = useTransform(scrollY, [150, 400], [0, 1]);
@@ -97,7 +120,7 @@ const Home = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            style={{ scale: heroScale }} // Add scale transform to content
+            style={{ scale: heroScale }}
             transition={{ duration: 0.8 }}
             className="text-center"
           >
@@ -107,7 +130,7 @@ const Home = () => {
                 Disrupt.
               </span>
             </h1>
-            <p className="text-xl md:text-2xl lg:text-3xl text-gray-600 mb-8 max-w-2xl mx-auto select-none">
+            <p className="text-xl md:text-2xl lg:text-3xl text-gray-600 mb-8 mx-auto select-none">
               Revolutionizing the world with cutting-edge solutions for a digital future.
             </p>
             <motion.div
@@ -203,14 +226,18 @@ const Home = () => {
         className="py-20 lg:py-32 bg-gray-50 relative z-10 overflow-hidden"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2
+          <motion.section
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-3xl sm:text-5xl lg:text-7xl font-bold text-center text-gray-900 mb-12 lg:mb-20"
+            className="mb-16 text-center px-6"
           >
-            Our Services
-          </motion.h2>
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">
+                Our Services
+              </h2>
+            </div>
+          </motion.section>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 max-w-7xl mx-auto">
             {whatWeCanDo.map((item, index) => (
@@ -259,26 +286,42 @@ const Home = () => {
 
       {/* Bento Grid Section */}
       <motion.section
-        style={{ opacity: bentoOpacity, y: bentoTranslateY }}
-        className="min-h-screen py-20 px-6 bg-gray-100"
-      >
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-7xl font-bold text-center mb-20">Highlights</h2>
-          <div className="grid grid-cols-2 gap-6 auto-rows-[150px]">
-            {bentoItems.map((item, index) => (
-              <motion.div
-                key={item.title}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="py-20">
+
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl text-center mb-8 pb-8 md:text-5xl font-bold bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">
+            Highlights
+          </h2>
+        </div>
+        {/* </motion.section> */}
+        {(
+          <div className="grid max-h-screen h-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-1 gap-6 w-full max-w-[120rem] mx-auto px-4 sm:px-6 md:px-8">
+            {blogs.map((blog, index) => (
+              <motion.a
+                key={blog.id}
+                href={blog.link}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className={`rounded-3xl p-8 bg-gradient-to-r ${item.color} ${item.span || ''} text-white hover:scale-[1.02] transition-transform cursor-pointer`}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className={`group relative flex overflow-hidden rounded-2xl transition-all duration-300 hover:scale-[1.02] min-h-[280px] ${index === 0
+                  ? 'md:col-span-2 md:row-span-2'
+                  : index === 1
+                    ? 'md:col-span-1 md:row-span-1'
+                    : 'md:col-span-1 md:row-span-1 lg:row-span-2'
+                  }`}
               >
-                <h3 className="text-2xl font-bold mb-4">{item.title}</h3>
-                <p className="text-lg opacity-90">{item.description}</p>
-              </motion.div>
+                <img
+                  src={blog.image}
+                  alt={blog.title}
+                  className="absolute transition-all duration-500 group-hover:grayscale-0 group-hover:scale-110 object-cover w-full h-full"
+                />
+              </motion.a>
             ))}
           </div>
-        </div>
+        )}
       </motion.section>
 
       {/* Footer Section */}
