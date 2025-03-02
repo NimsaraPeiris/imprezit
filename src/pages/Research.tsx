@@ -6,58 +6,57 @@ import { ExpandableCards } from '../components/ui/expandable-card';
 
 const researchAreas = [
   {
-    title: 'AI & Machine Learning',
-    description: 'Advancing the boundaries of artificial intelligence',
-    icon: '🤖',
-    image: '/images/research/ai.jpg',
+    title: 'Yathraa - Experience Based Travel Platform for Sri Lanka',
+    description: 'An experience-based travel platform designed to showcase the unique beauty, culture, and adventures of Sri Lanka, offering tailored travel experiences for explorers.',
+    icon: '🌴',
+    image: '/images/research/yathraa.jpg',
     ctaText: 'Learn More',
     ctaLink: '#',
-    content: `Our AI & Machine Learning research focuses on developing practical business applications 
-    through deep learning, natural language processing, and computer vision. We're committed to 
-    advancing the field while ensuring ethical AI development practices.
+    content: `Yathraa is an innovative travel platform that curates personalized travel experiences in Sri Lanka. 
+    It highlights the country's rich culture, stunning landscapes, and adventurous activities, providing travelers 
+    with unique and memorable journeys.
     
-    Key Areas:
-    • Deep Learning Architectures
-    • Natural Language Processing
-    • Computer Vision Systems
-    • Ethical AI Development
-    • Business Intelligence Integration`
+    Key Features:
+    • Personalized Travel Itineraries
+    • Cultural and Adventure Tours
+    • Local Guides and Experts
+    • Sustainable Tourism Practices
+    • User-Friendly Booking System`
   },
   {
-    title: 'Cloud Computing',
-    description: 'Next-generation cloud architectures',
-    icon: '☁️',
-    image: '/images/research/cloud.jpg',
+    title: 'BlockLand - Decentralized Land Registry System Using Blockchain Technology',
+    description: 'A decentralized land registry system leveraging blockchain technology to enhance transparency, security, and efficiency in land ownership management.',
+    icon: '🏡',
+    image: '/images/research/blockland.jpg',
     ctaText: 'Learn More',
     ctaLink: '#',
-    content: `We're exploring innovative approaches to cloud computing, focusing on serverless 
-    architectures and edge computing solutions. Our research aims to optimize performance, enhance 
-    security, and improve scalability for enterprise applications.
+    content: `BlockLand utilizes blockchain technology to create a secure and transparent land registry system. 
+    It aims to streamline land ownership processes, reduce fraud, and improve the efficiency of land transactions.
     
     Focus Areas:
-    • Serverless Computing
-    • Edge Computing
-    • Cloud Security
-    • Performance Optimization
-    • Distributed Systems`
+    • Blockchain Integration
+    • Land Ownership Verification
+    • Fraud Prevention
+    • Transaction Transparency
+    • Secure Data Management`
   },
   {
-    title: 'Quantum Computing',
-    description: 'Preparing for the quantum future',
-    icon: '⚛️',
-    image: '/images/research/quantum.jpg',
+    title: 'FatGo - Comprehensive AI Based Health solution for Fat related diseases',
+    description: 'An AI-powered health solution focused on addressing fat-related diseases through personalized insights, innovative tools, and comprehensive care strategies.',
+    icon: '🍏',
+    image: '/images/research/fatgo.jpg',
     ctaText: 'Learn More',
     ctaLink: '#',
-    content: `Our quantum computing research investigates the potential of quantum algorithms and their 
-    applications in cryptography and machine learning. We're working to prepare businesses for the 
-    quantum computing revolution.
+    content: `FatGo is an AI-driven health platform dedicated to combating fat-related diseases. It offers personalized 
+    health insights, advanced diagnostic tools, and tailored care plans to help individuals manage and prevent conditions 
+    related to excess body fat.
     
     Research Areas:
-    • Quantum Algorithms
-    • Quantum Cryptography
-    • Quantum Machine Learning
-    • Error Correction
-    • Quantum-Safe Security`
+    • AI-Based Diagnostics
+    • Personalized Health Insights
+    • Innovative Treatment Tools
+    • Comprehensive Care Strategies
+    • Preventative Health Measures`
   }
 ];
 
@@ -92,11 +91,11 @@ const Research = () => {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+            <h1 className="text-5xl md:text-8xl font-bold text-white mb-6">
               Research & Development
             </h1>
             <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-              Pushing the boundaries of technology through innovative research and development
+            Pushing the boundaries of technology through innovative research and development
             </p>
           </motion.div>
         </div>

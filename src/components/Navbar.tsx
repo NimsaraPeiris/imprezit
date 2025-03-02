@@ -11,7 +11,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-4 sm:top-16 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] sm:w-[95%] max-w-7xl mx-auto">
+    <nav className="fixed top-4 sm:top-8 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] sm:w-[95%] max-w-7xl mx-auto">
       <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg px-4 sm:px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -55,7 +55,6 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Desktop Contact Button */}
           <Link 
             to="/contact"
             className="hidden lg:block bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-8 py-3 rounded-lg text-xl font-medium hover:opacity-90 transition-opacity"

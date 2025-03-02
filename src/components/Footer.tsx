@@ -1,26 +1,31 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+// import { FaLinkedin, FaTwitter, FaGithub } from 'react-icons/fa';
 
 const footerContent = {
     companyInfo: {
-        description: 'ImprezIT delivers innovative digital solutions to transform businesses for the modern age.',
-        social: [
-            { name: 'LinkedIn', url: '#', icon: '🔗' },
-            { name: 'Twitter', url: '#', icon: '🐦' },
-            { name: 'GitHub', url: '#', icon: '💻' }
-        ]
+        description: 'Imprezit transforms the world with cutting-edge digital solutions that empower innovation and growth in the modern age.',
+        // social: [
+        //     { name: 'LinkedIn', url: '#', icon: <FaLinkedin /> },
+        //     { name: 'Twitter', url: '#', icon: <FaTwitter /> },
+        //     { name: 'GitHub', url: '#', icon: <FaGithub /> }
+        // ]
+
     },
     quickLinks: [
         { name: 'About Us', url: '/about' },
         { name: 'Services', url: '/services' },
         { name: 'Projects', url: '/projects' },
-        { name: 'Contact', url: '/contact' }
+        { name: 'Contact Us', url: '/contact' }
     ],
     services: [
-        { name: 'Web Development', url: '/services/web' },
-        { name: 'Mobile Apps', url: '/services/mobile' },
-        { name: 'Cloud Solutions', url: '/services/cloud' },
-        { name: 'AI Integration', url: '/services/ai' }
+        { name: 'Full-Stack Development', url: '/services/' },
+        { name: 'Mobile App Development', url: '/services/' },
+        { name: 'User Experience', url: '/services/' },
+        { name: 'Artificial Intelligence', url: '/services/' },
+        { name: 'Business Digitization', url: '/services/' },
+        { name: 'Technical & Business Consultation', url: '/services/' }
+
     ],
     contact: {
         address: '123 Tech Street, Digital City, 12345',
@@ -43,7 +48,7 @@ export const Footer = () => {
                     <div className="space-y-6">
                         <h3 className="text-7xl font-bold text-white">Imprezit</h3>
                         <p className="text-gray-400">{footerContent.companyInfo.description}</p>
-                        <div className="flex space-x-4">
+                        {/* <div className="flex space-x-4">
                             {footerContent.companyInfo.social.map((item) => (
                                 <a
                                     key={item.name}
@@ -54,6 +59,14 @@ export const Footer = () => {
                                     {item.icon}
                                 </a>
                             ))}
+                        </div> */}
+                        <div className="flex justify-center lg:justify-start">
+                            <Link
+                                to="/contact"
+                                className="hidden lg:inline-block bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-8 py-3 rounded-lg text-xl font-medium hover:opacity-90 transition-opacity"
+                            >
+                                Contact Us
+                            </Link>
                         </div>
                     </div>
 
@@ -121,10 +134,18 @@ export const Footer = () => {
                     </div>
                 </div>
 
-                <div className="border-t border-gray-800 mt-12 pt-8 text-center">
-                    <p className="text-gray-400">
-                        © {new Date().getFullYear()} ImprezIT. All rights reserved.
-                    </p>
+                <div className="border-t border-gray-800 mt-12 pt-8">
+                    <div className="flex flex-col md:flex-row items-center justify-center">
+                        <p className="text-gray-400 text-center">
+                            © {new Date().getFullYear()} Imprezit. All rights reserved.
+                        </p>
+                        <motion.div
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="mt-4 md:mt-0"
+                        >
+                        </motion.div>
+                    </div>
                 </div>
             </div>
         </motion.footer>

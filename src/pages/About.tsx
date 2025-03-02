@@ -60,6 +60,33 @@ const blogs = [
   // },
 ];
 
+const pillars = [
+  {
+    title: 'Innovation',
+    icon: '🚀',
+    description: 'Innovation is at our core. We drive it through continuous research and development, exploring new technologies and ideas to develop innovative solutions that not only stay ahead of the curve but also address real-world challenges, unlock new opportunities, and empower individuals and communities to thrive in a rapidly evolving digital landscape.',
+    gradient: 'from-blue-500 to-indigo-500'
+  },
+  {
+    title: 'Technical Expertise',
+    icon: '💻',
+    description: 'Our team possesses extensive technical expertise across a wide range of domains, including artificial intelligence (AI), machine learning (ML), web and mobile development, blockchain, cloud computing, and data analytics. We leverage these advanced technologies to deliver high-quality, innovative solutions tailored to solve complex challenges and drive success in the digital era.',
+    gradient: 'from-purple-500 to-pink-500'
+  },
+  {
+    title: 'Business Digitalization',
+    icon: '📈',
+    description: 'We help businesses thrive in the digital age by transforming and automating day-to-day operations, improving workflows, and delivering tailored digital solutions. With a focus on strategic alignment, we ensure that our digitalization efforts not only enhance efficiency but also drive meaningful impact, foster innovation, and support long-term growth, ultimately positioning our clients for sustained success in an ever-evolving digital landscape',
+    gradient: 'from-green-500 to-emerald-500'
+  },
+  {
+    title: 'Consultation',
+    icon: '🤝',
+    description: 'Our team offers comprehensive strategic guidance, providing both business and technical consultations to help clients make informed decisions, drive growth, and achieve their digital goals. Whether it\'s optimizing operations or leveraging technology for competitive advantage, we deliver tailored advice that empowers businesses to thrive in the digital era.',
+    gradient: 'from-yellow-500 to-orange-500'
+  }
+];
+
 const About = () => {
   const [_, inView] = useInView({
     triggerOnce: true,
@@ -89,16 +116,14 @@ const About = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-6xl font-bold text-gray-900 mb-8">
+            <h1 className="text-4xl md:text-8xl font-bold text-gray-900 mb-8">
               Learn More About{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500">
-                Imprezit
+              Imprezit
               </span>
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed">
-              We are a forward-thinking startup dedicated to transforming businesses
-              through innovative technology solutions. Our mission is to empower
-              organizations to thrive in the digital age.
+            Together, we drive innovation to enable success in the digital era.
             </p>
           </motion.div>
         </div>
@@ -125,57 +150,73 @@ const About = () => {
       </motion.section>
 
       <div className="container mx-auto">
-
-        {/* Mission Section */}
+        {/* Overview Section - Updated */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-32 pt-20"
         >
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center pt-20">Our Mission</h2>
-          <div className="grid grid-cols-2 gap-6 mb-6">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="bg-white p-8 rounded-lg shadow-md"
-            >
-              <h3 className="text-xl font-semibold text-primary-600 mb-4">Vision</h3>
-              <p className="text-gray-600">
-                To be the leading force in digital innovation, transforming businesses 
-                through cutting-edge technology solutions that drive growth and success.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="bg-white p-8 rounded-lg shadow-md"
-            >
-              <h3 className="text-xl font-semibold text-primary-600 mb-4">Strategy</h3>
-              <p className="text-gray-600">
-                Delivering innovative solutions through agile methodologies and 
-                maintaining strong partnerships with industry leaders.
-              </p>
-            </motion.div>
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="p-12 bg-gradient-to-br from-primary-500 to-secondary-500 text-white">
+                  <h2 className="text-4xl font-bold mb-6">Overview</h2>
+                  <p className="text-xl leading-relaxed">
+                    Imprezit is a dynamic team of innovators dedicated to pushing the boundaries 
+                    of technology and shaping the digital future.
+                  </p>
+                </div>
+                <div className="p-12">
+                  <p className="text-xl text-gray-600 leading-relaxed">
+                    Through expertise in development, artificial intelligence, digitization, and consulting, 
+                    we craft cutting-edge solutions that empower individuals and industries alike.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
+        </motion.section>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-white p-8 rounded-lg shadow-md col-span-2"
-          >
-            <h3 className="text-xl font-semibold text-primary-600 mb-4">Implementation</h3>
-            <p className="text-gray-600">
-              We execute our vision through a combination of cutting-edge technologies, 
-              expert team collaboration, and a deep understanding of business needs. 
-              Our approach ensures successful digital transformation while maintaining 
-              the highest standards of quality and security.
+        {/* Mission Statement - Updated */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-32 text-center px-6"
+        >
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">
+              Our Mission
+            </h2>
+            <p className="text-2xl text-gray-600 leading-relaxed">
+              Driving innovation and shaping a brighter digital future, where technology transforms 
+              lives and fosters meaningful connections across the globe.
             </p>
-          </motion.div>
+          </div>
+        </motion.section>
+
+        {/* Pillars Section - New */}
+        <motion.section className="mb-32 px-6">
+          <div className="grid md:grid-cols-2 gap-8">
+            {pillars.map((pillar, index) => (
+              <motion.div
+                key={pillar.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white rounded-2xl shadow-lg overflow-hidden"
+              >
+                <div className={`p-8 bg-gradient-to-r ${pillar.gradient}`}>
+                  <span className="text-4xl">{pillar.icon}</span>
+                  <h3 className="text-2xl font-bold text-white mt-4">{pillar.title}</h3>
+                </div>
+                <div className="p-8">
+                  <p className="text-gray-600 leading-relaxed">{pillar.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </motion.section>
 
         {/* Awards Bento Grid */}
