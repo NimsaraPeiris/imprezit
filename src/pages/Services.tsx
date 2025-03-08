@@ -84,7 +84,7 @@ const Services = () => {
     offset: ['start start', 'end start'],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
+  // const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
   return (
@@ -92,13 +92,13 @@ const Services = () => {
       {/* Hero Section */}
       <motion.section
         ref={heroRef}
-        style={{ scale, opacity }}
+        style={{ opacity }}
         className="min-h-screen relative flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100"
       >
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
         <div className="container mx-auto px-6 py-20 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-center mx-auto"

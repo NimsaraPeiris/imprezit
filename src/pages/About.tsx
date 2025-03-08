@@ -9,7 +9,7 @@ const blogs = [
     title: '1st Runner Up at the Alliance of Masterminds Hackathon',
     // author: 'Michael Jordan',
     date: '00.00.2024',
-    image: './public/images/achivements/1st-RUP-G_ALFA.jpg',
+    image: '/images/achivements/1st-RUP-G_ALFA.jpg',
     // avatar: 'https://i.pravatar.cc/150?img=1',
     link: '/',
   },
@@ -18,7 +18,7 @@ const blogs = [
     title: '1st runner-up at IEEE INSL',
     // author: 'Jane Doe',
     date: '02.03.2024',
-    image: './public/images/achivements/1st-RUP-INSL.jpeg',
+    image: '/images/achivements/1st-RUP-INSL.jpeg',
     // avatar: 'https://i.pravatar.cc/150?img=2',
     link: '/',
   },
@@ -27,7 +27,7 @@ const blogs = [
     title: 'IdeaniX winners by IEEE SLTC',
     // author: 'John Smith',
     date: '18.03.2021',
-    image: './public/images/achivements/Winners-IDEANIX.jpeg',
+    image: '/images/achivements/Winners-IDEANIX.jpeg',
     // avatar: 'https://i.pravatar.cc/150?img=3',
     link: '/',
   },
@@ -36,7 +36,7 @@ const blogs = [
     title: 'Unipreneur\'s Impact Challenge Finalists',
     // author: 'Alice Johnson',
     date: '24.12.2024',
-    image: './public/images/achivements/Palladian.png',
+    image: '/images/achivements/Palladian.png',
     // avatar: 'https://i.pravatar.cc/150?img=4',
     link: '/',
   },
@@ -46,25 +46,25 @@ const pillars = [
   {
     title: 'Innovation',
     icon: '🚀',
-    description: 'Innovation is at our core. We drive it through continuous research and development...',
+    description: 'Innovation is at our core. We drive it through continuous research and development, exploring new technologies and ideas to develop innovative solutions that not only stay ahead of the curve but also address real-world challenges, unlock new opportunities, and empower individuals and communities to thrive in a rapidly evolving digital landscape.',
     gradient: 'from-blue-500 to-indigo-500'
   },
   {
     title: 'Technical Expertise',
     icon: '💻',
-    description: 'Our team possesses extensive technical expertise across a wide range of domains...',
+    description: 'Our team possesses extensive technical expertise across a wide range of domains, including artificial intelligence (AI), machine learning (ML), web and mobile development, blockchain, cloud computing, and data analytics. We leverage these advanced technologies to deliver high-quality, innovative solutions tailored to solve complex challenges and drive success in the digital era.',
     gradient: 'from-purple-500 to-pink-500'
   },
   {
     title: 'Business Digitalization',
     icon: '📈',
-    description: 'We help businesses thrive in the digital age by transforming and automating day-to-day operations...',
+    description: 'We help businesses thrive in the digital age by transforming and automating day-to-day operations, improving workflows, and delivering tailored digital solutions. With a focus on strategic alignment, we ensure that our digitalization efforts not only enhance efficiency but also drive meaningful impact, foster innovation, and support long-term growth, ultimately positioning our clients for sustained success in an ever-evolving digital landscape',
     gradient: 'from-green-500 to-emerald-500'
   },
   {
     title: 'Consultation',
     icon: '🤝',
-    description: 'Our team offers comprehensive strategic guidance, providing both business and technical consultations...',
+    description: 'Our team offers comprehensive strategic guidance, providing both business and technical consultations to help clients make informed decisions, drive growth, and achieve their digital goals. Whether it\'s optimizing operations or leveraging technology for competitive advantage, we deliver tailored advice that empowers businesses to thrive in the digital era.',
     gradient: 'from-yellow-500 to-orange-500'
   }
 ];
@@ -93,7 +93,7 @@ const About = () => {
   }, [handleScroll]);
 
   const opacity = 1 - Math.min(scrollY / 500, 1); // reduces opacity as you scroll
-  const scale = 1 + Math.min(scrollY / 1000, 0.2); // increases scale as you scroll
+  // const scale = 1 + Math.min(scrollY / 1000, 0.2); // increases scale as you scroll
 
   return (
     <div className="pt-0">
@@ -146,11 +146,11 @@ const About = () => {
         </motion.div>
       </motion.section>
 
-      <section className="bg-gray-200">
-        <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
-          <div className="sm:text-lg text-gray-800">
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">Overview</h2>
-            <p className="mb-4 text-2xl text-gray-600 leading-relaxed">Imprezit is a dynamic team of innovators dedicated to pushing the boundaries of technology...</p>
+      <section className="">
+        <div className="gap-16 items-top py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6 ">
+          <div className="sm:text-lg text-gray-800 p-6 shadow rounded-3xl bg-gradient-to-r from-primary-500/30 to-secondary-500/10">
+            <h2 className="text-6xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">Overview</h2>
+            <p className="text-xl md:text-2xl text-gray-900 leading-relaxed text-justify">Imprezit is a dynamic team of innovators dedicated to pushing the boundaries of technology and shaping the digital future. Through expertise in development, artificial intelligence, digitization, and consulting, we craft cutting-edge solutions that empower individuals and industries alike. With a passion for driving progress, we aim to create meaningful impacts on how people live, work, and connect in an ever-evolving digital world.</p>
           </div>
           <div className="grid grid-cols-2 gap-4 mt-8 hover:opacity-70 transition-opacity duration-300">
             <img className="w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-2.png" alt="office content 1" />
@@ -163,17 +163,17 @@ const About = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-32 pt-20"
+          className="mb-24 pt-20"
         >
           <div className="max-w-7xl mx-auto px-6">
-            <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="p-8 bg-gradient-to-br from-primary-500 to-secondary-500 text-white flex items-center justify-center">
-                  <h2 className="text-6xl font-bold mb-6">Our Mission</h2>
+            <div className="bg-white rounded-3xl shadow-xl overflow-hidden border">
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="p-4 bg-gradient-to-br from-primary-500 to-secondary-500 text-white flex items-center justify-center">
+                  <h2 className="text-6xl font-bold mb-4">Our Mission</h2>
                 </div>
-                <div className="p-12">
-                  <p className="text-xl text-gray-600 leading-relaxed">
-                    Driving innovation and shaping a brighter digital future...
+                <div className="p-4">
+                  <p className="text-xl text-gray-600 leading-relaxed font-bold">
+                  Driving innovation and shaping a brighter digital future, where technology transforms lives and fosters meaningful connections across the globe.
                   </p>
                 </div>
               </div>
@@ -207,7 +207,7 @@ const About = () => {
               >
                 <div className={`p-8 bg-gradient-to-r ${pillar.gradient}`}>
                   <span className="text-4xl">{pillar.icon}</span>
-                  <h3 className="text-2xl font-bold text-white mt-4">{pillar.title}</h3>
+                  <h3 className="text-xl md:text-2xl lg:text-3xl text-gray-600 mb-8 mx-auto select-none">{pillar.title}</h3>
                 </div>
                 <div className="p-8">
                   <p className="text-gray-600 font-bold leading-relaxed">{pillar.description}</p>

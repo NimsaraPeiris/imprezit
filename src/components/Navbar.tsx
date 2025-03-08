@@ -78,7 +78,7 @@ const Navbar = () => {
                   Home
                 </Link>
                 <Link to="/services" className="nav-link text-xl" onClick={toggleMenu}>
-                  What We Do
+                  Our Services
                 </Link>
                 <Link to="/about" className="nav-link text-xl" onClick={toggleMenu}>
                   About Us

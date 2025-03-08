@@ -1,6 +1,4 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-// Remove unused import
-// import { useInView } from 'react-intersection-observer';
 import { Footer } from '../components/Footer';
 import { ExpandableCards } from '../components/ui/expandable-card';
 
@@ -9,13 +7,13 @@ const researchAreas = [
     title: 'Yathraa - Experience Based Travel Platform for Sri Lanka',
     description: 'An experience-based travel platform designed to showcase the unique beauty, culture, and adventures of Sri Lanka, offering tailored travel experiences for explorers.',
     icon: '🌴',
-    image: '/images/research/yathraa.jpg',
+    image: 'images/research/yathraa.png',
     ctaText: 'Learn More',
+    gradient: 'from-primary-500 to-secondary-500',
     ctaLink: '#',
     content: `Yathraa is an innovative travel platform that curates personalized travel experiences in Sri Lanka. 
     It highlights the country's rich culture, stunning landscapes, and adventurous activities, providing travelers 
-    with unique and memorable journeys.
-    
+    with unique and memorable journeys.\n    
     Key Features:
     • Personalized Travel Itineraries
     • Cultural and Adventure Tours
@@ -29,6 +27,7 @@ const researchAreas = [
     icon: '🏡',
     image: '/images/research/blockland.jpg',
     ctaText: 'Learn More',
+    gradient: 'from-purple-500 to-pink-500',
     ctaLink: '#',
     content: `BlockLand utilizes blockchain technology to create a secure and transparent land registry system. 
     It aims to streamline land ownership processes, reduce fraud, and improve the efficiency of land transactions.
@@ -46,6 +45,7 @@ const researchAreas = [
     icon: '🍏',
     image: '/images/research/fatgo.jpg',
     ctaText: 'Learn More',
+    gradient: 'from-blue-500 to-indigo-500',
     ctaLink: '#',
     content: `FatGo is an AI-driven health platform dedicated to combating fat-related diseases. It offers personalized 
     health insights, advanced diagnostic tools, and tailored care plans to help individuals manage and prevent conditions 
@@ -61,12 +61,12 @@ const researchAreas = [
 ];
 
 const keyResearchAreas = [
-  { title: 'Artificial Intelligence', icon: '🤖' },
-  { title: 'Ed Tech', icon: '📚' },
-  { title: 'Health Tech', icon: '🏥' },
-  { title: 'Community-Centered Tech', icon: '🌍' },
-  { title: 'Quantum Computing', icon: '⚛️' },
-  { title: 'Business Digitization', icon: '💼' }
+  { title: 'Artificial Intelligence', icon: '🤖', backgroundImage: 'images/research/ai.jpg' },
+  { title: 'Education Tech', icon: '📚', backgroundImage: 'images/research/ed-tech.jpg' },
+  { title: 'Health Tech', icon: '🏥', backgroundImage: 'images/research/health.jpg' },
+  { title: 'Community Tech', icon: '🌍', backgroundImage: 'images/research/community.jpg' },
+  { title: 'Computer Vision', icon: '⚛️', backgroundImage: 'images/research/computer.jpg' },
+  { title: 'Business Digitization', icon: '💼', backgroundImage: 'images/research/business.jpg' }
 ];
 
 const Research = () => {
@@ -106,19 +106,44 @@ const Research = () => {
 
       <section className="py-16 bg-gray-100 text-center">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r pb-4 from-primary-500 to-secondary-500 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r pb-16 from-primary-500 to-secondary-500 bg-clip-text text-transparent">
             Our Key Research Areas
           </h2>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {keyResearchAreas.map((area, index) => (
-              <div key={index} className="p-6 bg-white rounded-xl shadow-md flex flex-col items-center">
-                <div className="text-5xl mb-4">{area.icon}</div>
-                <h3 className="text-xl font-semibold text-gray-800">{area.title}</h3>
+              <div
+                key={index}
+                className="relative grid grid-cols-2 p-28 fixed rounded-3xl overflow-hidden shadow-md flex flex-col items-center group hover:scale-105 transition-transform duration-300 ease-in-out"
+                style={{
+                  backgroundImage: `url(${area.backgroundImage})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
+              >
+                {/* Dark overlay to darken the background */}
+                <div className="absolute inset-0 bg-black opacity-30 z-0 rounded-3xl"></div>
+
+                {/* Backdrop blur effect */}
+                <div className="absolute inset-0 backdrop-blur-[10px] z-0 rounded-3xl"></div>
+
+                {/* Text and icon with z-index to bring them forward */}
+                <div className="relative z-10 text-8xl text-center text-white mb-4">{area.icon}</div>
+                <h3 className="relative z-10 text-2xl md:text-3xl font-semibold text-white text-left">
+                  {area.title === 'Health Tech' ? (
+                    <>
+                      Health<br />Tech
+                    </>
+                  ) : (
+                    area.title
+                  )}
+                </h3>
               </div>
             ))}
           </div>
         </div>
       </section>
+
 
       {/* Research Areas Section with Expandable Cards */}
       <section className="py-20 bg-white">

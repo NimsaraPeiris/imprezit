@@ -51,13 +51,13 @@ const Contact = () => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value || '', // Ensuring value is never undefined or null
+      [name]: value || '',
     }));
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSending(true); // Set sending animation
+    setIsSending(true);
 
     const emailMessage = `
       Name: ${formData.name}\n
@@ -79,10 +79,10 @@ const Contact = () => {
       .then((response) => {
         console.log('SUCCESS!', response.status, response.text, emailParams);
         setIsSubmitted(true);
-        setIsSending(false); // Stop sending animation
+        setIsSending(false);
       }, (err) => {
         console.error('FAILED...', err);
-        setIsSending(false); // Stop sending animation if failed
+        setIsSending(false);
       });
   };
 
@@ -95,13 +95,13 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
           className="max-w-7xl mx-auto bg-black rounded-3xl shadow-2xl overflow-hidden mt-8 lg:mt-12"
         >
-          <div className="grid md:grid-cols-12 min-h-[700px] bg-gray-50">
+          <div className="grid md:grid-cols-2 min-h-[700px] bg-gray-50">
             <div className="md:col-span-5 relative px-6 py-10 lg:p-14 text-black flex flex-col justify-between">
               <motion.h2
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2, duration: 0.6 }}
-                className="text-6xl text-center lg:text-[9rem] font-bold mb-2 text-gray-900 bg-clip-text leading-tight"
+                className="text-6xl text-center lg:text-[9rem] font-bold text-gray-900 bg-clip-text leading-tight"
               >
                 Let's
               </motion.h2>
@@ -114,7 +114,7 @@ const Contact = () => {
                 Connect
               </motion.h2>
 
-              <p className="text-lg text-gray-800 text-justify max-w-md mx-auto">
+              <p className="text-lg text-gray-800 text-center max-w-md mx-auto">
                 Ready to unlock your business potential in this digital transformation era? 
                 With innovative technology solutions, mentoring, and expert guidance, 
                 we’re here to help you achieve your digital aspirations and thrive in a rapidly evolving landscape.

@@ -40,7 +40,7 @@ const blogs = [
     title: '1st runner-up at IEEE INSL',
     // author: 'Jane Doe',
     date: '02.03.2024',
-    image: '/public/images/achivements/1st-RUP-INSL.jpeg',
+    image: '/images/achivements/1st-RUP-INSL.jpeg',
     // avatar: 'https://i.pravatar.cc/150?img=2',
     link: '/',
   },
@@ -49,7 +49,7 @@ const blogs = [
     title: 'IdeaniX winners by IEEE SLTC',
     // author: 'John Smith',
     date: '18.03.2021',
-    image: '/public/images/achivements/Winners-IDEANIX.jpeg',
+    image: '/images/achivements/Winners-IDEANIX.jpeg',
     // avatar: 'https://i.pravatar.cc/150?img=3',
     link: '/',
   },
@@ -58,7 +58,7 @@ const blogs = [
     title: 'Unipreneur\'s Impact Challenge Finalists',
     // author: 'Alice Johnson',
     date: '24.12.2024',
-    image: '/public/images/achivements/Palladian.png',
+    image: '/images/achivements/Palladian.png',
     // avatar: 'https://i.pravatar.cc/150?img=4',
     link: '/',
   },
@@ -67,7 +67,7 @@ const blogs = [
     title: '1st runner-up at IEEE INSL',
     // author: 'Robert Brown',
     date: '02.11.2024',
-    image: '/public/images/achivements/1st-RUP-G_ALFA.jpg',
+    image: '/images/achivements/1st-RUP-G_ALFA.jpg',
     // avatar: 'https://i.pravatar.cc/150?img=5',
     link: '/',
   },
@@ -76,7 +76,7 @@ const blogs = [
     title: 'soon',
     // author: 'Robert Brown',
     date: '02.11.2024',
-    image: '/public/images/achivements/y1.jpeg',
+    image: '/images/achivements/y1.jpeg',
     // avatar: 'https://i.pravatar.cc/150?img=5',
     link: '/',
   },
@@ -298,7 +298,7 @@ const Home = () => {
         </div>
         {/* </motion.section> */}
         {(
-          <div className="grid max-h-screen h-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-1 gap-6 w-full max-w-[120rem] mx-auto px-4 sm:px-6 md:px-8">
+          <div className="grid max-h-screen h-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-[120rem] mx-auto px-4 sm:px-6 md:px-8">
             {blogs.map((blog, index) => (
               <motion.a
                 key={blog.id}
