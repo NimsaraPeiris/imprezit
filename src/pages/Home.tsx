@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { Particles } from '../components/Particles';
 import { Footer } from '../components/Footer';
 
@@ -82,9 +82,11 @@ const blogs = [
   },
 ];
 
-
-
 const Home = () => {
+  useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+  
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
   const heroOpacity = useTransform(scrollY, [0, 300], [1, 0]);
@@ -306,8 +308,8 @@ const Home = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`group relative flex overflow-hidden rounded-2xl transition-all duration-300 hover:scale-[1.02] min-h-[280px] ${index === 0
-                  ? 'md:col-span-2 md:row-span-2'
+                className={`group relative flex overflow-hidden rounded-3xl transition-all duration-300 hover:scale-[1.02] min-h-[280px] ${index === 0
+                  ? 'md:col-span-2 md:row-span-3'
                   : index === 1
                     ? 'md:col-span-1 md:row-span-1'
                     : 'md:col-span-1 md:row-span-1 lg:row-span-2'

@@ -1,4 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { useEffect } from 'react';
 import { Footer } from '../components/Footer';
 import { ExpandableCards } from '../components/ui/expandable-card';
 
@@ -8,36 +9,35 @@ const researchAreas = [
     description: 'An experience-based travel platform designed to showcase the unique beauty, culture, and adventures of Sri Lanka, offering tailored travel experiences for explorers.',
     icon: '🌴',
     image: 'images/research/yathraa.png',
+    points: `Key Features:
+    • Personalized Travel Itineraries
+    • Cultural and Adventure Tours
+    • Local Guides and Experts
+    • Sustainable Tourism Practices
+    • User-Friendly Booking System`,
     ctaText: 'Learn More',
     gradient: 'from-primary-500 to-secondary-500',
     ctaLink: '#',
     content: `Yathraa is an innovative travel platform that curates personalized travel experiences in Sri Lanka. 
     It highlights the country's rich culture, stunning landscapes, and adventurous activities, providing travelers 
-    with unique and memorable journeys.\n    
-    Key Features:
-    • Personalized Travel Itineraries
-    • Cultural and Adventure Tours
-    • Local Guides and Experts
-    • Sustainable Tourism Practices
-    • User-Friendly Booking System`
+    with unique and memorable journeys.`
   },
   {
     title: 'BlockLand - Decentralized Land Registry System Using Blockchain Technology',
     description: 'A decentralized land registry system leveraging blockchain technology to enhance transparency, security, and efficiency in land ownership management.',
     icon: '🏡',
     image: '/images/research/blockland.jpg',
-    ctaText: 'Learn More',
-    gradient: 'from-purple-500 to-pink-500',
-    ctaLink: '#',
-    content: `BlockLand utilizes blockchain technology to create a secure and transparent land registry system. 
-    It aims to streamline land ownership processes, reduce fraud, and improve the efficiency of land transactions.
-    
-    Focus Areas:
+    points: `Focus Areas:
     • Blockchain Integration
     • Land Ownership Verification
     • Fraud Prevention
     • Transaction Transparency
-    • Secure Data Management`
+    • Secure Data Management`,
+    ctaText: 'Learn More',
+    gradient: 'from-purple-500 to-pink-500',
+    ctaLink: '#',
+    content: `BlockLand utilizes blockchain technology to create a secure and transparent land registry system. 
+    It aims to streamline land ownership processes, reduce fraud, and improve the efficiency of land transactions.`
   },
   {
     title: 'FatGo - Comprehensive AI Based Health solution for Fat related diseases',
@@ -49,9 +49,8 @@ const researchAreas = [
     ctaLink: '#',
     content: `FatGo is an AI-driven health platform dedicated to combating fat-related diseases. It offers personalized 
     health insights, advanced diagnostic tools, and tailored care plans to help individuals manage and prevent conditions 
-    related to excess body fat.
-    
-    Research Areas:
+    related to excess body fat.`,
+    points: `Research Areas:
     • AI-Based Diagnostics
     • Personalized Health Insights
     • Innovative Treatment Tools
@@ -70,6 +69,10 @@ const keyResearchAreas = [
 ];
 
 const Research = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   // Add scroll animations
   const { scrollY } = useScroll();
   const heroOpacity = useTransform(scrollY, [0, 300], [1, 0]);
@@ -114,7 +117,7 @@ const Research = () => {
             {keyResearchAreas.map((area, index) => (
               <div
                 key={index}
-                className="relative grid grid-cols-2 p-28 fixed rounded-3xl overflow-hidden shadow-md flex flex-col items-center group hover:scale-105 transition-transform duration-300 ease-in-out"
+                className="relative p-8 rounded-3xl overflow-hidden shadow-md flex flex-col items-center justify-center min-h-[240px] group hover:scale-105 transition-transform duration-300 ease-in-out"
                 style={{
                   backgroundImage: `url(${area.backgroundImage})`,
                   backgroundSize: 'cover',
@@ -127,17 +130,13 @@ const Research = () => {
                 {/* Backdrop blur effect */}
                 <div className="absolute inset-0 backdrop-blur-[10px] z-0 rounded-3xl"></div>
 
-                {/* Text and icon with z-index to bring them forward */}
-                <div className="relative z-10 text-8xl text-center text-white mb-4">{area.icon}</div>
-                <h3 className="relative z-10 text-2xl md:text-3xl font-semibold text-white text-left">
-                  {area.title === 'Health Tech' ? (
-                    <>
-                      Health<br />Tech
-                    </>
-                  ) : (
-                    area.title
-                  )}
-                </h3>
+                {/* Content wrapper for vertical stacking */}
+                <div className="relative z-10 flex flex-col items-center gap-4">
+                  <div className="text-6xl sm:text-8xl text-white">{area.icon}</div>
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white text-center">
+                    {area.title}
+                  </h3>
+                </div>
               </div>
             ))}
           </div>

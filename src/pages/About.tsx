@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Footer } from '../components/Footer';
 import { useState, useEffect, useCallback } from 'react';
@@ -70,6 +70,15 @@ const pillars = [
 ];
 
 const About = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
+  const { scrollY } = useScroll();
+  const heroOpacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const heroTranslateY = useTransform(scrollY, [0, 300], [0, -100]);
+  const heroScale = useTransform(scrollY, [0, 300], [1, 1.5]);
+
   const [_, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -77,10 +86,10 @@ const About = () => {
 
   const [mounted, setMounted] = useState(false);
 
-  const [scrollY, setScrollY] = useState(0);
+  const [ , setScrollYState] = useState(0);
 
   const handleScroll = useCallback(() => {
-    setScrollY(window.scrollY);
+    setScrollYState(window.scrollY);
   }, []);
 
   useEffect(() => {
@@ -92,16 +101,15 @@ const About = () => {
     };
   }, [handleScroll]);
 
-  const opacity = 1 - Math.min(scrollY / 500, 1); // reduces opacity as you scroll
-  // const scale = 1 + Math.min(scrollY / 1000, 0.2); // increases scale as you scroll
-
   return (
     <div className="pt-0">
       {/* Hero Section */}
       <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: opacity < 0 ? 0 : opacity }}
-        transition={{ duration: 0.8 }}
+        style={{ 
+          opacity: heroOpacity,
+          y: heroTranslateY,
+          scale: heroScale
+        }}
         className="min-h-screen relative flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100"
       >
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
@@ -146,18 +154,62 @@ const About = () => {
         </motion.div>
       </motion.section>
 
-      <section className="">
-        <div className="gap-16 items-top py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6 ">
-          <div className="sm:text-lg text-gray-800 p-6 shadow rounded-3xl bg-gradient-to-r from-primary-500/30 to-secondary-500/10">
-            <h2 className="text-6xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">Overview</h2>
-            <p className="text-xl md:text-2xl text-gray-900 leading-relaxed text-justify">Imprezit is a dynamic team of innovators dedicated to pushing the boundaries of technology and shaping the digital future. Through expertise in development, artificial intelligence, digitization, and consulting, we craft cutting-edge solutions that empower individuals and industries alike. With a passion for driving progress, we aim to create meaningful impacts on how people live, work, and connect in an ever-evolving digital world.</p>
-          </div>
-          <div className="grid grid-cols-2 gap-4 mt-8 hover:opacity-70 transition-opacity duration-300">
-            <img className="w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-2.png" alt="office content 1" />
-            <img className="mt-4 w-full lg:mt-10 rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-1.png" alt="office content 2" />
+      <section className="py-12 md:py-20">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="bg-white rounded-3xl shadow-lg overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+              {/* Text Content */}
+              <div className="p-6 md:p-10 flex flex-col justify-center">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 
+                  bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">
+                  Overview
+                </h2>
+                <p className="text-lg md:text-xl lg:text-2xl text-gray-800 leading-relaxed">
+                  Imprezit is a dynamic team of innovators dedicated to pushing the boundaries 
+                  of technology and shaping the digital future. Through expertise in development, 
+                  artificial intelligence, digitization, and consulting, we craft cutting-edge 
+                  solutions that empower individuals and industries alike. With a passion for 
+                  driving progress, we aim to create meaningful impacts on how people live, 
+                  work, and connect in an ever-evolving digital world.
+                </p>
+              </div>
+
+              {/* Image Grid */}
+              <div className="relative p-6 md:p-10">
+                <div className="grid grid-cols-2 gap-4 md:gap-6">
+                  <div className="space-y-4 md:space-y-6">
+                    <div className="relative overflow-hidden rounded-2xl shadow-lg 
+                      group transition-all duration-300 hover:shadow-xl">
+                      <img 
+                        className="w-full h-[200px] md:h-[300px] object-cover 
+                        transform transition-transform duration-300 group-hover:scale-110" 
+                        src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-2.png" 
+                        alt="office environment" 
+                      />
+                      <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 
+                        transition-opacity duration-300"/>
+                    </div>
+                  </div>
+                  <div className="space-y-4 md:space-y-6 mt-8">
+                    <div className="relative overflow-hidden rounded-2xl shadow-lg 
+                      group transition-all duration-300 hover:shadow-xl">
+                      <img 
+                        className="w-full h-[200px] md:h-[300px] object-cover 
+                        transform transition-transform duration-300 group-hover:scale-110" 
+                        src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-1.png" 
+                        alt="office meeting room" 
+                      />
+                      <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 
+                        transition-opacity duration-300"/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
+
       <div className="container mx-auto">
         <motion.section
           initial={{ opacity: 0, y: 20 }}
@@ -169,10 +221,10 @@ const About = () => {
             <div className="bg-white rounded-3xl shadow-xl overflow-hidden border">
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="p-4 bg-gradient-to-br from-primary-500 to-secondary-500 text-white flex items-center justify-center">
-                  <h2 className="text-6xl font-bold mb-4">Our Mission</h2>
+                  <h2 className="items-center text-5xl lg:text-6xl font-bold">Our Mission</h2>
                 </div>
-                <div className="p-4">
-                  <p className="text-xl text-gray-600 leading-relaxed font-bold">
+                <div className="p-6">
+                  <p className="text-xl lg:text-2xl text-gray-600 leading-relaxed font-justify text-justify">
                   Driving innovation and shaping a brighter digital future, where technology transforms lives and fosters meaningful connections across the globe.
                   </p>
                 </div>
@@ -206,11 +258,11 @@ const About = () => {
                 className="bg-white rounded-2xl shadow-lg overflow-hidden"
               >
                 <div className={`p-8 bg-gradient-to-r ${pillar.gradient}`}>
-                  <span className="text-4xl">{pillar.icon}</span>
-                  <h3 className="text-xl md:text-2xl lg:text-3xl text-gray-600 mb-8 mx-auto select-none">{pillar.title}</h3>
+                  {/* <span className="text-4xl">{pillar.icon}</span> */}
+                  <h3 className="text-2xl font-bold lg:text-3xl text-white mb-8 mx-auto select-none">{pillar.title}</h3>
                 </div>
                 <div className="p-8">
-                  <p className="text-gray-600 font-bold leading-relaxed">{pillar.description}</p>
+                  <p className="text-xl lg:text-2xl text-gray-600 leading-relaxed">{pillar.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -246,7 +298,7 @@ const About = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   className={`group relative flex overflow-hidden rounded-2xl transition-all duration-300 hover:scale-[1.02] min-h-[280px] ${index === 0
-                    ? 'md:col-span-2 md:row-span-2'
+                    ? 'md:col-span-1 md:row-span-1'
                     : index === 1
                       ? 'md:col-span-1 md:row-span-1'
                       : 'md:col-span-1 md:row-span-1 lg:row-span-2'

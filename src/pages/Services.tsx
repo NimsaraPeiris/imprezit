@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Footer } from '../components/Footer';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 const serviceCategories = [
   {
@@ -78,21 +78,26 @@ const serviceCategories = [
 ];
 
 const Services = () => {
-  const heroRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ['start start', 'end start'],
-  });
+  useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
 
-  // const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+  const heroRef = useRef(null);
+  const { scrollY } = useScroll();
+  const heroOpacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const heroTranslateY = useTransform(scrollY, [0, 300], [0, -100]);
+  const heroScale = useTransform(scrollY, [0, 300], [1, 1.5]);
 
   return (
     <div className="pt-0">
       {/* Hero Section */}
       <motion.section
         ref={heroRef}
-        style={{ opacity }}
+        style={{ 
+          opacity: heroOpacity,
+          y: heroTranslateY,
+          scale: heroScale
+        }}
         className="min-h-screen relative flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100"
       >
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
@@ -149,11 +154,11 @@ const Services = () => {
               >
                 <div className={`p-8 bg-gradient-to-r ${service.gradient} transition-colors duration-300 min-h-[240px]`}>
                   <span className="text-5xl mb-4 block">{service.icon}</span>
-                  <h3 className="text-2xl font-bold text-white mb-4">{service.title}</h3>
-                  <p className="text-white/90 line-clamp-3">{service.description}</p>
+                  <h3 className="text-4xl font-bold text-white mb-4">{service.title}</h3>
+                  <p className="text-2xl text-white/90 line-clamp-3">{service.description}</p>
                 </div>
                 <div className="p-8 min-h-[200px]">
-                  <ul className="space-y-3">
+                  <ul className="space-y-3 text-2xl font-bold">
                     {service.features.map((feature, i) => (
                       <li key={i} className="flex items-start text-gray-700">
                         <svg

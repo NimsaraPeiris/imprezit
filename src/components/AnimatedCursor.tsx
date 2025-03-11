@@ -10,11 +10,11 @@ export function AnimatedCursor() {
     useEffect(() => {
         // Check if device is mobile
         const checkMobile = () => {
-            const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            // const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
             const isCoarseMouse = window.matchMedia('(pointer: coarse)').matches;
             const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
             
-            setIsMobile(isTouchDevice || isCoarseMouse || isMobileUA);
+            setIsMobile(isCoarseMouse || isMobileUA);
         };
 
         checkMobile();
