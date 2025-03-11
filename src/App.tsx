@@ -5,6 +5,7 @@ import About from './pages/About';
 import Services from './pages/Services';
 import Contact from './pages/Contact';
 import Research from './pages/Research';
+import NotFound from './pages/NotFound';
 import { CursorProvider } from './context/CursorContext';
 import { useEffect } from 'react';
 
@@ -35,6 +36,7 @@ function App() {
               <Route path="services" element={<Services />} />
               <Route path="contact" element={<Contact />} />
               <Route path="research" element={<Research />} />
+              <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>
         </BrowserRouter>
