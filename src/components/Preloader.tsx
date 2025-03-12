@@ -83,7 +83,7 @@ export const Preloader = ({ onComplete }: { onComplete: () => void }) => {
                                 className="absolute inset-x-0 flex items-center justify-center z-50"
                             >
                                 <motion.div 
-                                    className="text-7xl md:text-9xl font-bold tracking-tight flex justify-center items-center w-full"
+                                    className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-bold tracking-tight flex justify-center items-center w-full"
                                 >
                                     {words[currentWord].split('').map((letter, idx) => (
                                         <motion.span
@@ -95,7 +95,7 @@ export const Preloader = ({ onComplete }: { onComplete: () => void }) => {
                                                 delay: idx * 0.05,
                                                 ease: "easeOut"
                                             }}
-                                            className="inline-block text-glow text-white mx-[1px]"
+                                            className="inline-block text-glow text-white mx-[0.5px] sm:mx-[1px]"
                                             style={{
                                                 display: 'inline-block',
                                                 textShadow: `
@@ -117,7 +117,7 @@ export const Preloader = ({ onComplete }: { onComplete: () => void }) => {
                 {/* Enhanced Company Name */}
                 {currentWord === words.length && (
                     <motion.div 
-                        className="mt-16 relative flex justify-center w-full"
+                        className="mt-8 sm:mt-12 md:mt-16 relative flex justify-center w-full"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                     >
@@ -133,7 +133,7 @@ export const Preloader = ({ onComplete }: { onComplete: () => void }) => {
                                 ease: "easeInOut"
                             }}
                         />
-                        <div className="relative flex justify-center items-center space-x-1">
+                        <div className="relative flex justify-center items-center space-x-[0.5px] sm:space-x-1">
                             {letters.map((letter, index) => (
                                 <motion.span
                                     key={index}
@@ -145,7 +145,7 @@ export const Preloader = ({ onComplete }: { onComplete: () => void }) => {
                                         type: "spring",
                                         stiffness: 200,
                                     }}
-                                    className="text-5xl md:text-8xl font-bold text-white text-glow"
+                                    className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold text-white text-glow"
                                 >
                                     {letter}
                                 </motion.span>

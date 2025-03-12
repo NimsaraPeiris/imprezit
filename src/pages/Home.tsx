@@ -27,58 +27,58 @@ const whatWeCanDo = [
 
 const blogs = [
   {
-    id: 1,
-    title: '1st Runner Up at the Alliance of Masterminds Hackathon',
-    // author: 'Michael Jordan',
-    date: '00.00.2024',
-    image: '/images/achivements/gen2.jpeg',
-    // avatar: 'https://i.pravatar.cc/150?img=1',
-    link: '/',
+    id: 4,
+    title: 'IdeaniX winners by IEEE SLTC',
+    // author: 'John Smith',
+    date: '2023',
+    image: '/images/achivements/ideanix.jpg',
+    // avatar: 'https://i.pravatar.cc/150?img=3',
+    link: '',
   },
   {
     id: 2,
-    title: '1st runner-up at IEEE INSL',
+    title: 'IEEE INSL Final Pitch 1st Runner Up',
     // author: 'Jane Doe',
-    date: '02.03.2024',
+    date: '2024',
     image: '/images/achivements/1st-RUP-INSL.jpeg',
     // avatar: 'https://i.pravatar.cc/150?img=2',
-    link: '/',
+    link: '',
   },
   {
-    id: 3,
-    title: 'IdeaniX winners by IEEE SLTC',
-    // author: 'John Smith',
-    date: '18.03.2021',
-    image: '/images/achivements/Winners-IDEANIX.jpeg',
-    // avatar: 'https://i.pravatar.cc/150?img=3',
-    link: '/',
-  },
-  {
-    id: 4,
-    title: 'Unipreneur\'s Impact Challenge Finalists',
-    // author: 'Alice Johnson',
-    date: '24.12.2024',
-    image: '/images/achivements/Palladian.png',
-    // avatar: 'https://i.pravatar.cc/150?img=4',
-    link: '/',
-  },
-  {
-    id: 5,
-    title: '1st runner-up at IEEE INSL',
-    // author: 'Robert Brown',
-    date: '02.11.2024',
+    id: 1,
+    title: '1st Runner Up at the Alliance of Masterminds Hackathon',
+    // author: 'Michael Jordan',
+    date: '2023',
     image: '/images/achivements/1st-RUP-G_ALFA.jpg',
-    // avatar: 'https://i.pravatar.cc/150?img=5',
-    link: '/',
+    // avatar: 'https://i.pravatar.cc/150?img=1',
+    link: '',
+  },
+  {
+    id: 7,
+    title: 'IEEE INSL Provincial Competition Winners',
+    // author: 'Alice Johnson',
+    date: '2024',
+    image: '/images/achivements/fp.jpg',
+    // avatar: 'https://i.pravatar.cc/150?img=4',
+    link: '',
   },
   {
     id: 6,
-    title: 'soon',
-    // author: 'Robert Brown',
-    date: '02.11.2024',
+    title: '1st runner up at Travel Tech Hackathon',
+    // author: 'Alice Johnson',
+    date: '2023',
     image: '/images/achivements/y1.jpeg',
-    // avatar: 'https://i.pravatar.cc/150?img=5',
-    link: '/',
+    // avatar: 'https://i.pravatar.cc/150?img=4',
+    link: '',
+  },
+  {
+    id: 5,
+    title: 'Unipreneur\'s Impact Challenge Finalists',
+    // author: 'Alice Johnson',
+    date: '2024',
+    image: '/images/achivements/Palladian.png',
+    // avatar: 'https://i.pravatar.cc/150?img=4',
+    link: '',
   },
 ];
 
@@ -298,32 +298,46 @@ const Home = () => {
             Highlights
           </h2>
         </div>
-        {/* </motion.section> */}
-        {(
-          <div className="grid max-h-screen h-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-[120rem] mx-auto px-4 sm:px-6 md:px-8">
-            {blogs.map((blog, index) => (
-              <motion.a
-                key={blog.id}
-                href={blog.link}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`group relative flex overflow-hidden rounded-3xl transition-all duration-300 hover:scale-[1.02] min-h-[280px] ${index === 0
-                  ? 'md:col-span-2 md:row-span-3'
-                  : index === 1
-                    ? 'md:col-span-1 md:row-span-1'
-                    : 'md:col-span-1 md:row-span-1 lg:row-span-2'
-                  }`}
-              >
-                <img
-                  src={blog.image}
-                  alt={blog.title}
-                  className="absolute transition-all duration-500 group-hover:grayscale-0 group-hover:scale-110 object-cover w-full h-full"
-                />
-              </motion.a>
-            ))}
-          </div>
-        )}
+        <div className="grid grid-cols-1 md:grid-cols-6 auto-rows-[250px] gap-8 w-full max-w-[120rem] mx-auto px-4 sm:px-6 md:px-8">
+          {blogs.map((blog, index) => (
+            <motion.div
+              key={blog.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className={`group relative flex overflow-hidden rounded-2xl transition-all duration-300 hover:scale-[1.02] ${
+                index === 0 
+                  ? 'md:col-span-4 md:row-span-2' // First item spans 4 columns and 2 rows
+                : index === 1
+                  ? 'md:col-span-2 md:row-span-2' // Second item spans 2 columns and 2 rows
+                : index === 2
+                  ? 'md:col-span-3 md:row-span-2' // Third item spans 3 columns and 2 rows
+                : index === 3
+                  ? 'md:col-span-3 md:row-span-2' // Fourth item spans 3 columns and 2 rows
+                : 'md:col-span-2 md:row-span-1' // Rest take 2 columns and 1 row
+              }`}
+            >
+              <img
+                src={blog.image}
+                alt={blog.title}
+                className="absolute transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 object-cover w-full h-full"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+              <div className="relative flex h-full w-full flex-col justify-end p-4 sm:p-6 text-white">
+                <h2 className={`mb-2 font-bold leading-tight ${
+                  index === 0 
+                    ? 'text-2xl sm:text-3xl lg:text-4xl' // Larger text for the main highlight
+                    : 'text-lg sm:text-xl lg:text-2xl' // Smaller text for other items
+                }`}>
+                  {blog.title}
+                </h2>
+                <div className="flex items-center space-x-2">
+                  <span className="text-xs sm:text-sm text-gray-300">{blog.date}</span>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </motion.section>
 
       {/* Footer Section */}

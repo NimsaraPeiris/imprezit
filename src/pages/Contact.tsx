@@ -91,25 +91,25 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen pt-20 md:pt-28 lg:pt-32 pb-16 bg-gray-50 relative">
+    <div className="min-h-screen pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-8 sm:pb-12 bg-gray-50 relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="max-w-8xl mx-auto"
+          className="max-w-7xl mx-auto"
         >
           {/* Main grid container */}
-          <div className="grid md:grid-cols-2 gap-8 py-16 lg:gap-12 items-center">
+          <div className="grid pt-16 lg:pt-32 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-start lg:items-center">
             {/* Left Column - Text Content */}
-            <div className="relative flex flex-col justify-center h-full">
-              <div className="max-w-xl mx-auto space-y-8">
-                <div className="text-center md:text-left">
+            <div className="relative order-2 lg:order-1">
+              <div className="max-w-xl mx-auto space-y-6 sm:space-y-8">
+                <div className="text-center lg:text-left">
                   <motion.h2
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2, duration: 0.6 }}
-                    className="text-7xl lg:text-9xl mb-4 text-gray-900 leading-tight"
+                    className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl mb-2 sm:mb-4 text-gray-900 leading-tight"
                   >
                     Let's
                   </motion.h2>
@@ -117,9 +117,10 @@ const Contact = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.3, duration: 0.6 }}
-                    className="text-6xl lg:text-8xl font-bold mb-16 pb-8 text-gray-900 leading-tight"
+                    className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-8 sm:mb-12 text-gray-900 leading-tight"
                   >
-                    Connect <br /><br />😏😉😃
+                    Connect 
+                    {/* <span className="text-3xl sm:text-4xl">😏😉😃</span> */}
                   </motion.h2>
                 </div>
                 
@@ -127,7 +128,7 @@ const Contact = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.6 }}
-                  className="text-lg md:text-2xl text-gray-800 bg-white shadow-2xl border-8 border-black rounded-3xl p-8 lg:p-12"
+                  className="text-base sm:text-lg lg:text-xl text-gray-800 bg-white shadow-xl border-4 sm:border-8 border-black rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10"
                 >
                   <b>Ready to unlock your business potential in this digital transformation era? </b><br /><br />
                   With innovative technology solutions, mentoring, and expert guidance,
@@ -137,16 +138,16 @@ const Contact = () => {
             </div>
 
             {/* Right Column - Form */}
-            <div className="relative">
+            <div className="relative order-1 lg:order-2">
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
                 onMouseMove={handleMouseMove}
-                className=" shadow-lg bg-black relative overflow-hidden rounded-3xl"
+                className="shadow-lg bg-black relative overflow-hidden rounded-2xl sm:rounded-3xl"
               >
                 <motion.div
-                  className="pointer-events-none absolute w-32 h-32 rounded-3xl bg-white/20 blur-xl"
+                  className="pointer-events-none absolute w-24 sm:w-32 h-24 sm:h-32 rounded-full bg-white/20 blur-xl"
                   style={{
                     x: circleX,
                     y: circleY,
@@ -155,11 +156,11 @@ const Contact = () => {
                   }}
                 />
 
-                <div className="relative z-10 p-6 lg:p-10">
+                <div className="relative z-10 p-4 sm:p-6 lg:p-8">
                   {isSubmitted ? (
-                    <div className="py-16 px-8 flex justify-center items-center h-full">
-                      <div className="space-y-8 text-center">
-                        <svg className="w-16 h-16 text-white mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div className="py-12 sm:py-16 px-4 sm:px-8 flex justify-center items-center h-full">
+                      <div className="space-y-6 sm:space-y-8 text-center">
+                        <svg className="w-12 h-12 sm:w-16 sm:h-16 text-white mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path
                             strokeLinecap="round"
                             strokeLinejoin="round"
@@ -167,9 +168,9 @@ const Contact = () => {
                             d="M5 13l4 4L19 7"
                           />
                         </svg>
-                        <div className="space-y-4">
-                          <h3 className="text-3xl font-bold text-white">Thank you for reaching out!</h3>
-                          <p className="text-xl text-white/90 max-w-md mx-auto">
+                        <div className="space-y-3 sm:space-y-4">
+                          <h3 className="text-2xl sm:text-3xl font-bold text-white">Thank you for reaching out!</h3>
+                          <p className="text-lg sm:text-xl text-white/90 max-w-md mx-auto">
                             We're excited to connect with you and will get back to you soon.
                           </p>
                         </div>
@@ -177,47 +178,47 @@ const Contact = () => {
                     </div>
                   ) : (
                     <>
-                      <h3 className="text-2xl text-center font-semibold text-white mb-8">
+                      <h3 className="text-xl sm:text-2xl text-center font-semibold text-white mb-6 sm:mb-8">
                         Send us a message
                       </h3>
                       <motion.form
                         onSubmit={handleSubmit}
-                        className="space-y-6"
+                        className="space-y-4 sm:space-y-6"
                       >
-                        <div className="space-y-5 text-2xl">
+                        <div className="space-y-4 text-base sm:text-lg lg:text-xl">
                           {[
                             { label: "Name", type: "text", placeholder: "Enter Name", required: true },
                             { label: "Email", type: "email", placeholder: "Enter E-Mail Address", required: true },
                             { label: "Phone", type: "tel", placeholder: "Enter Phone Number", required: true }
                           ].map((field) => (
-                            <div key={field.label} className="space-y-2">
+                            <div key={field.label} className="space-y-1.5">
                               <label className="text-sm font-medium text-white">
                                 {field.label}
                               </label>
                               <input
                                 type={field.type}
-                                name={field.label.toLowerCase().replace(/ /g, '') as keyof FormData} // Type-safe key
-                                className="w-full px-4 py-2.5 rounded-lg border border-white/20 bg-white/10 text-white placeholder-white/50 focus:ring-2 focus:ring-white/30 focus:border-transparent transition-all"
+                                name={field.label.toLowerCase()}
+                                className="w-full px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg border border-white/20 bg-white/10 text-white placeholder-white/50 focus:ring-2 focus:ring-white/30 focus:border-transparent transition-all text-base sm:text-lg"
                                 placeholder={field.placeholder}
-                                value={formData[field.label.toLowerCase().replace(/ /g, '') as keyof FormData]} // Ensuring value is controlled
+                                value={formData[field.label.toLowerCase() as keyof FormData]}
                                 onChange={handleChange}
-                                required={field.required} // Add required here
+                                required={field.required}
                               />
                             </div>
                           ))}
-                          <div className="space-y-2">
+                          <div className="space-y-1.5">
                             <label className="text-sm font-medium text-white">
                               What is your message about?
                             </label>
                             <select
                               name="category"
-                              className="w-full px-4 py-2.5 rounded-lg border border-white/20 
+                              className="w-full px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg border border-white/20 
                               bg-white/10 text-white focus:ring-2 focus:ring-white/30 
-                              focus:border-transparent transition-all backdrop-blur-sm
+                              focus:border-transparent transition-all backdrop-blur-sm text-base sm:text-lg
                               [&>option]:bg-gray-600 [&>option]:text-white
                               appearance-none bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNNCA2TDggMTBMMTIgNiIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=')] 
                               bg-no-repeat bg-[center_right_1rem]"
-                              value={formData.category} // Ensure value is controlled
+                              value={formData.category}
                               onChange={handleChange}
                             >
                               <option value="" disabled className="text-white bg-black">
@@ -235,16 +236,16 @@ const Contact = () => {
                             </select>
                           </div>
 
-                          <div className="space-y-2">
+                          <div className="space-y-1.5">
                             <label className="text-sm font-medium text-white">
                               What are you planning to build?
                             </label>
                             <textarea
                               name="message"
-                              rows={5}
-                              className="w-full px-4 py-2.5 rounded-lg border border-white/20 bg-white/10 text-white placeholder-white/50 focus:ring-2 focus:ring-white/30 focus:border-transparent transition-all resize-none"
+                              rows={4}
+                              className="w-full px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg border border-white/20 bg-white/10 text-white placeholder-white/50 focus:ring-2 focus:ring-white/30 focus:border-transparent transition-all resize-none text-base sm:text-lg"
                               placeholder="Tell us about your project..."
-                              value={formData.message} // Ensure value is controlled
+                              value={formData.message}
                               onChange={handleChange}
                             ></textarea>
                           </div>
@@ -253,15 +254,16 @@ const Contact = () => {
                         <motion.button
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
-                          className="w-full py-3 text-2xl text-black bg-white/80 hover:bg-white/20 hover:text-white/80 border border-white/20 transition-all duration-300 relative rounded-lg"
+                          className="w-full py-2.5 sm:py-3 text-lg sm:text-xl lg:text-2xl text-black bg-white/90 hover:bg-white/20 hover:text-white/90 border border-white/20 transition-all duration-300 relative rounded-lg font-semibold"
                           type="submit"
+                          disabled={isSending}
                         >
                           {isSending ? (
                             <div className="absolute inset-0 flex items-center justify-center">
                               <svg
-                                className="w-8 h-8 text-white animate-spin"
+                                className="w-6 h-6 sm:w-8 sm:h-8 text-white animate-spin"
                                 xmlns="http://www.w3.org/2000/svg"
-                                fill=""
+                                fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="black"
                               >

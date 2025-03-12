@@ -5,41 +5,69 @@ import { useState, useEffect, useCallback } from 'react';
 
 const blogs = [
   {
-    id: 1,
-    title: '1st Runner Up at the Alliance of Masterminds Hackathon',
-    // author: 'Michael Jordan',
-    date: '00.00.2024',
-    image: '/images/achivements/1st-RUP-G_ALFA.jpg',
-    // avatar: 'https://i.pravatar.cc/150?img=1',
-    link: '/',
-  },
-  {
-    id: 2,
-    title: '1st runner-up at IEEE INSL',
-    // author: 'Jane Doe',
-    date: '02.03.2024',
-    image: '/images/achivements/1st-RUP-INSL.jpeg',
-    // avatar: 'https://i.pravatar.cc/150?img=2',
-    link: '/',
-  },
-  {
     id: 3,
-    title: 'IdeaniX winners by IEEE SLTC',
+    title: 'IdeaniX semifinalists by IEEE SLTC',
     // author: 'John Smith',
-    date: '18.03.2021',
+    date: '18.03.2023',
     image: '/images/achivements/Winners-IDEANIX.jpeg',
     // avatar: 'https://i.pravatar.cc/150?img=3',
-    link: '/',
+    link: '',
   },
   {
     id: 4,
+    title: 'IdeaniX winners by IEEE SLTC',
+    // author: 'John Smith',
+    date: '2023',
+    image: '/images/achivements/ideanix.jpg',
+    // avatar: 'https://i.pravatar.cc/150?img=3',
+    link: '',
+  },
+  {
+    id: 2,
+    title: 'IEEE INSL Final Pitch 1st Runner Up',
+    // author: 'Jane Doe',
+    date: '2024',
+    image: '/images/achivements/1st-RUP-INSL.jpeg',
+    // avatar: 'https://i.pravatar.cc/150?img=2',
+    link: '',
+  },
+  {
+    id: 1,
+    title: '1st Runner Up at the Alliance of Masterminds Hackathon',
+    // author: 'Michael Jordan',
+    date: '2023',
+    image: '/images/achivements/1st-RUP-G_ALFA.jpg',
+    // avatar: 'https://i.pravatar.cc/150?img=1',
+    link: '',
+  },
+  {
+    id: 6,
+    title: '1st runner up at Travel Tech Hackathon',
+    // author: 'Alice Johnson',
+    date: '2023',
+    image: '/images/achivements/y1.jpeg',
+    // avatar: 'https://i.pravatar.cc/150?img=4',
+    link: '',
+  },
+  {
+    id: 5,
     title: 'Unipreneur\'s Impact Challenge Finalists',
     // author: 'Alice Johnson',
-    date: '24.12.2024',
+    date: '2024',
     image: '/images/achivements/Palladian.png',
     // avatar: 'https://i.pravatar.cc/150?img=4',
-    link: '/',
+    link: '',
   },
+  {
+    id: 7,
+    title: 'IEEE INSL Provincial Competition Winners',
+    // author: 'Alice Johnson',
+    date: '2024',
+    image: '/images/achivements/fp.jpg',
+    // avatar: 'https://i.pravatar.cc/150?img=4',
+    link: '',
+  },
+
 ];
 
 const pillars = [
@@ -275,7 +303,7 @@ const About = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-16 py-20"
+          className="py-4"
         >
           <motion.section
             initial={{ opacity: 0, y: 20 }}
@@ -289,38 +317,30 @@ const About = () => {
               </h2>
             </div>
           </motion.section>
-          {mounted && (
-            <div className="grid max-h-screen h-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-1 gap-16 w-full max-w-[120rem] mx-auto px-4 sm:px-6 md:px-8">
-              {blogs.map((blog, index) => (
-                <motion.a
-                  key={blog.id}
-                  href={blog.link}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className={`group relative flex overflow-hidden rounded-2xl transition-all duration-300 hover:scale-[1.02] min-h-[280px] ${index === 0
-                    ? 'md:col-span-1 md:row-span-1'
-                    : index === 1
-                      ? 'md:col-span-1 md:row-span-1'
-                      : 'md:col-span-1 md:row-span-1 lg:row-span-2'
-                    }`}
-                >
-                  <img
-                    src={blog.image}
-                    alt={blog.title}
-                    className="absolute transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 object-cover w-full h-full"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                  <div className="relative flex h-full w-full flex-col justify-end p-6 text-white">
-                    <h2 className="mb-2 text-2xl font-bold leading-tight">{blog.title}</h2>
-                    <div className="flex items-center space-x-2">
-                      <span className="text-xs text-gray-300">{blog.date}</span>
-                    </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-[120rem] mx-auto px-4 sm:px-6 md:px-8">
+            {blogs.map((blog, index) => (
+              <motion.div
+                key={blog.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="group relative flex overflow-hidden rounded-2xl transition-all duration-300 hover:scale-[1.02] aspect-[4/3]"
+              >
+                <img
+                  src={blog.image}
+                  alt={blog.title}
+                  className="absolute transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 object-cover w-full h-full"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                <div className="relative flex h-full w-full flex-col justify-end p-6 text-white">
+                  <h2 className="mb-2 text-2xl font-bold leading-tight">{blog.title}</h2>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-xs text-gray-300">{blog.date}</span>
                   </div>
-                </motion.a>
-              ))}
-            </div>
-          )}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </motion.section>
 
         <motion.section

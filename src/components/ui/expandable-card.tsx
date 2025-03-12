@@ -123,7 +123,7 @@ export function ExpandableCards({ cards }: { cards: Card[] }) {
                             layoutId={`card-${card.title}-${id}`}
                             key={card.title}
                             onClick={() => setActive(card)}
-                            className={`p-8 flex flex-col items-center gap-4 bg-white rounded-3xl cursor-pointer
+                            className={`p-6 flex flex-col items-center gap-4 bg-white rounded-3xl cursor-pointer
                                 w-full sm:w-[45%] md:w-[28%] relative overflow-hidden
                                 shadow-xl hover:shadow-2xl group hover:scale-105
                                 transition-all duration-700 ease-in-out`}
@@ -137,13 +137,13 @@ export function ExpandableCards({ cards }: { cards: Card[] }) {
                             {/* Content wrapper with z-index */}
                             <div className="relative z-10">
                                 <motion.div layoutId={`icon-${card.title}-${id}`} 
-                                    className="text-7xl text-black group-hover:text-white transition-colors duration-700 ease-in-out transform group-hover:scale-110 text-center">
+                                    className="lg:text-7xl text-5xl text-black group-hover:text-white transition-colors duration-700 ease-in-out transform group-hover:scale-110 text-center">
                                     {card.icon}
                                 </motion.div>
                                 
                                 <motion.h3
                                     layoutId={`title-${card.title}-${id}`}
-                                    className={`font-bold text-2xl text-center mt-4 ${textGradientClass} group-hover:text-white transition-all duration-700 ease-in-out transform group-hover:scale-105`}
+                                    className={`font-bold lg:text-2xl text-xl text-center mt-4 ${textGradientClass} group-hover:text-white transition-all duration-700 ease-in-out transform group-hover:scale-105`}
                                 >
                                     {card.title}
                                 </motion.h3>
