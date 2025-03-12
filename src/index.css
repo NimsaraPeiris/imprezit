@@ -17,6 +17,21 @@ a, button, [role="button"], input[type="submit"], input[type="button"], input[ty
   cursor: none !important;
 }
 
+/* Preloader styles */
+.preloader-enter {
+  opacity: 1;
+}
+
+.preloader-exit {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+/* Ensure the body doesn't scroll during preload */
+body.preloading {
+  overflow: hidden;
+}
+
 @layer base {
   body {
     @apply m-0 font-sans antialiased bg-gray-50;
@@ -46,5 +61,29 @@ a, button, [role="button"], input[type="submit"], input[type="button"], input[ty
 
   .animate-on-scroll.visible {
     @apply opacity-100 translate-y-0;
+  }
+
+  .preloader-gradient {
+    @apply bg-gradient-to-r from-primary-500 to-secondary-500;
+    background-size: 200% 200%;
+    animation: gradient 8s ease infinite;
+  }
+  
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .text-glow {
+    text-shadow: 0 0 10px rgba(73, 73, 73, 0.7),
+                 0 0 20px rgba(255,255,255,0.5),
+                 0 0 30px rgba(255,255,255,0.3),
+                 0 0 40px rgba(14,165,233,0.3),
+                 0 0 70px rgba(217,70,239,0.3);
+  }
+
+  .perspective-[1000px] {
+    perspective: 1000px;
   }
 }

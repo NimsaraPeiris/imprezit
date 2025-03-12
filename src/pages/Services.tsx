@@ -89,14 +89,15 @@ const Services = () => {
   const heroScale = useTransform(scrollY, [0, 300], [1, 1.5]);
 
   return (
-    <div className="pt-0">
+    <div className="pt-0 overflow-hidden">
       {/* Hero Section */}
       <motion.section
         ref={heroRef}
         style={{ 
           opacity: heroOpacity,
           y: heroTranslateY,
-          scale: heroScale
+          scale: heroScale,
+          transformOrigin: 'center center'
         }}
         className="min-h-screen relative flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100"
       >

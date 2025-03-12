@@ -73,7 +73,7 @@ const About = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  
+
   const { scrollY } = useScroll();
   const heroOpacity = useTransform(scrollY, [0, 300], [1, 0]);
   const heroTranslateY = useTransform(scrollY, [0, 300], [0, -100]);
@@ -86,7 +86,7 @@ const About = () => {
 
   const [mounted, setMounted] = useState(false);
 
-  const [ , setScrollYState] = useState(0);
+  const [, setScrollYState] = useState(0);
 
   const handleScroll = useCallback(() => {
     setScrollYState(window.scrollY);
@@ -102,13 +102,14 @@ const About = () => {
   }, [handleScroll]);
 
   return (
-    <div className="pt-0">
+    <div className="pt-0 overflow-hidden">
       {/* Hero Section */}
       <motion.section
-        style={{ 
+        style={{
           opacity: heroOpacity,
           y: heroTranslateY,
-          scale: heroScale
+          scale: heroScale,
+          transformOrigin: 'center center'
         }}
         className="min-h-screen relative flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100"
       >
@@ -122,12 +123,12 @@ const About = () => {
           >
             <h1 className="md:text-8xl text-3xl font-bold text-gray-900 mb-8">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500">
-              Learn More About 
-              Imprezit
+                Learn More About
+                Imprezit
               </span>
             </h1>
             <p className="text-xl md:text-2xl lg:text-3xl text-gray-600 mb-8 mx-auto select-none">
-            Together, we drive innovation to enable success in the digital era.
+              Together, we drive innovation to enable success in the digital era.
 
             </p>
           </motion.div>
@@ -165,11 +166,11 @@ const About = () => {
                   Overview
                 </h2>
                 <p className="text-lg md:text-xl lg:text-2xl text-gray-800 leading-relaxed">
-                  Imprezit is a dynamic team of innovators dedicated to pushing the boundaries 
-                  of technology and shaping the digital future. Through expertise in development, 
-                  artificial intelligence, digitization, and consulting, we craft cutting-edge 
-                  solutions that empower individuals and industries alike. With a passion for 
-                  driving progress, we aim to create meaningful impacts on how people live, 
+                  <b>Imprezit</b> is a dynamic team of innovators dedicated to pushing the boundaries
+                  of technology and shaping the digital future. Through expertise in development,
+                  artificial intelligence, digitization, and consulting, we craft cutting-edge
+                  solutions that empower individuals and industries alike. With a passion for
+                  driving progress, we aim to create meaningful impacts on how people live,
                   work, and connect in an ever-evolving digital world.
                 </p>
               </div>
@@ -180,11 +181,11 @@ const About = () => {
                   <div className="space-y-4 md:space-y-6">
                     <div className="relative overflow-hidden rounded-2xl shadow-lg 
                       group transition-all duration-300 hover:shadow-xl">
-                      <img 
+                      <img
                         className="w-full h-[200px] md:h-[300px] object-cover 
-                        transform transition-transform duration-300 group-hover:scale-110" 
-                        src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-2.png" 
-                        alt="office environment" 
+                        transform transition-transform duration-300 group-hover:scale-110"
+                        src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-2.png"
+                        alt="office environment"
                       />
                       <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 
                         transition-opacity duration-300"/>
@@ -193,11 +194,11 @@ const About = () => {
                   <div className="space-y-4 md:space-y-6 mt-8">
                     <div className="relative overflow-hidden rounded-2xl shadow-lg 
                       group transition-all duration-300 hover:shadow-xl">
-                      <img 
+                      <img
                         className="w-full h-[200px] md:h-[300px] object-cover 
-                        transform transition-transform duration-300 group-hover:scale-110" 
-                        src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-1.png" 
-                        alt="office meeting room" 
+                        transform transition-transform duration-300 group-hover:scale-110"
+                        src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-1.png"
+                        alt="office meeting room"
                       />
                       <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 
                         transition-opacity duration-300"/>
@@ -225,7 +226,7 @@ const About = () => {
                 </div>
                 <div className="p-6">
                   <p className="text-xl lg:text-2xl text-gray-600 leading-relaxed font-justify text-justify">
-                  Driving innovation and shaping a brighter digital future, where technology transforms lives and fosters meaningful connections across the globe.
+                    Driving innovation and shaping a brighter digital future, where technology transforms lives and fosters meaningful connections across the globe.
                   </p>
                 </div>
               </div>

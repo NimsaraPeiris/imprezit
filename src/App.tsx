@@ -7,12 +7,14 @@ import Contact from './pages/Contact';
 import Research from './pages/Research';
 import NotFound from './pages/NotFound';
 import { CursorProvider } from './context/CursorContext';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { Preloader } from './components/Preloader';
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const handleResize = () => {
-      // Prevent bounce scroll on iOS
       document.documentElement.style.setProperty(
         '--vh', 
         `${window.innerHeight * 0.01}px`
@@ -24,6 +26,10 @@ function App() {
 
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  if (loading) {
+    return <Preloader onComplete={() => setLoading(false)} />;
+  }
 
   return (
     <div className="min-h-screen min-h-[--vh*100]">

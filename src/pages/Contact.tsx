@@ -97,19 +97,19 @@ const Contact = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="max-w-7xl mx-auto"
+          className="max-w-8xl mx-auto"
         >
           {/* Main grid container */}
           <div className="grid md:grid-cols-2 gap-8 py-16 lg:gap-12 items-center">
             {/* Left Column - Text Content */}
-            <div className="relative flex flex-col justify-center h-full p-8 lg:p-12">
+            <div className="relative flex flex-col justify-center h-full">
               <div className="max-w-xl mx-auto space-y-8">
                 <div className="text-center md:text-left">
                   <motion.h2
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2, duration: 0.6 }}
-                    className="text-6xl lg:text-8xl font-bold text-gray-900 leading-tight"
+                    className="text-7xl lg:text-9xl mb-4 text-gray-900 leading-tight"
                   >
                     Let's
                   </motion.h2>
@@ -117,9 +117,9 @@ const Contact = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.3, duration: 0.6 }}
-                    className="text-4xl lg:text-6xl font-bold mb-8 text-gray-900 leading-tight"
+                    className="text-6xl lg:text-8xl font-bold mb-16 pb-8 text-gray-900 leading-tight"
                   >
-                    Connect
+                    Connect <br /><br />😏😉😃
                   </motion.h2>
                 </div>
                 
@@ -127,9 +127,9 @@ const Contact = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.6 }}
-                  className="text-lg md:text-xl text-gray-800 bg-white shadow-lg rounded-3xl p-8"
+                  className="text-lg md:text-2xl text-gray-800 bg-white shadow-2xl border-8 border-black rounded-3xl p-8 lg:p-12"
                 >
-                  Ready to unlock your business potential in this digital transformation era?
+                  <b>Ready to unlock your business potential in this digital transformation era? </b><br /><br />
                   With innovative technology solutions, mentoring, and expert guidance,
                   we're here to help you achieve your digital aspirations and thrive in a rapidly evolving landscape.
                 </motion.p>
@@ -143,10 +143,10 @@ const Contact = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
                 onMouseMove={handleMouseMove}
-                className="rounded-2xl shadow-lg bg-gray-800 relative overflow-hidden"
+                className=" shadow-lg bg-black relative overflow-hidden rounded-3xl"
               >
                 <motion.div
-                  className="pointer-events-none absolute w-32 h-32 rounded-full bg-white/20 blur-xl"
+                  className="pointer-events-none absolute w-32 h-32 rounded-3xl bg-white/20 blur-xl"
                   style={{
                     x: circleX,
                     y: circleY,
@@ -253,7 +253,7 @@ const Contact = () => {
                         <motion.button
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
-                          className="w-full py-3 rounded-lg text-2xl text-black bg-white hover:bg-white/20 border border-white/20 transition-all duration-300 relative"
+                          className="w-full py-3 text-2xl text-black bg-white/80 hover:bg-white/20 hover:text-white/80 border border-white/20 transition-all duration-300 relative rounded-lg"
                           type="submit"
                         >
                           {isSending ? (
@@ -261,9 +261,9 @@ const Contact = () => {
                               <svg
                                 className="w-8 h-8 text-white animate-spin"
                                 xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
+                                fill=""
                                 viewBox="0 0 24 24"
-                                stroke="currentColor"
+                                stroke="black"
                               >
                                 <path
                                   strokeLinecap="round"
