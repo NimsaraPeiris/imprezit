@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, easeOut } from 'framer-motion';
 import { useEffect } from 'react';
 import { Footer } from '../components/Footer';
 import { ExpandableCards } from '../components/ui/expandable-card';
@@ -75,9 +75,21 @@ const Research = () => {
   
   // Add scroll animations
   const { scrollY } = useScroll();
-  const heroOpacity = useTransform(scrollY, [0, 300], [1, 0]);
-  const heroScale = useTransform(scrollY, [0, 300], [1, 1.5]);
-  const heroTranslateY = useTransform(scrollY, [0, 300], [0, -50]);
+  const heroOpacity = useTransform(scrollY, 
+    [0, 150, 300], 
+    [1, 0.5, 0],
+    { ease: easeOut }
+  );
+  const heroTranslateY = useTransform(scrollY, 
+    [0, 150, 300], 
+    [0, -25, -50],
+    { ease: easeOut }
+  );
+  const heroScale = useTransform(scrollY, 
+    [0, 150, 300], 
+    [1, 1.1, 1.2],
+    { ease: easeOut }
+  );
 
   return (
     <div className="pt-0 overflow-hidden"> {/* Added overflow-hidden here */}
@@ -85,22 +97,24 @@ const Research = () => {
       <motion.section
         style={{
           opacity: heroOpacity,
+          y: heroTranslateY,
           scale: heroScale,
-          y: heroTranslateY
+          transformOrigin: 'center center',
+          willChange: 'transform, opacity' // Add will-change for better performance
         }}
-        className="relative min-h-screen flex items-center bg-gradient-to-r from-gray-900 to-gray-800 overflow-hidden" /* Added overflow-hidden here */
+        className="relative min-h-[85vh] sm:min-h-screen flex items-center bg-gradient-to-r from-gray-900 to-gray-800 overflow-hidden"
       >
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 max-w-[95%] sm:max-w-7xl relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center"
+            className="text-center max-w-6xl mx-auto"
           >
-            <h1 className="md:text-8xl text-3xl font-bold text-white mb-8">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-3 sm:mb-4 md:mb-6 leading-tight">
               Research & Development
             </h1>
-            <p className="text-xl md:text-2xl lg:text-3xl text-gray-400 mb-8 mx-auto select-none">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 mb-6 mx-auto max-w-3xl px-4">
               Pushing the boundaries of technology through innovative research and development
             </p>
           </motion.div>
@@ -108,16 +122,16 @@ const Research = () => {
       </motion.section>
 
       <section className="py-16 bg-gray-100 text-center">
-        <div className="container mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r pb-16 from-primary-500 to-secondary-500 bg-clip-text text-transparent">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r pb-8 sm:pb-12 lg:pb-16 from-primary-500 to-secondary-500 bg-clip-text text-transparent">
             Our Key Research Areas
           </h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {keyResearchAreas.map((area, index) => (
               <div
                 key={index}
-                className="relative p-8 rounded-3xl overflow-hidden shadow-md flex flex-col items-center justify-center min-h-[240px] group hover:scale-105 transition-transform duration-300 ease-in-out"
+                className="relative p-4 sm:p-6 lg:p-8 rounded-3xl overflow-hidden shadow-md flex flex-col items-center justify-center min-h-[200px] sm:min-h-[220px] lg:min-h-[240px] group hover:scale-105 transition-transform duration-300 ease-in-out"
                 style={{
                   backgroundImage: `url(${area.backgroundImage})`,
                   backgroundSize: 'cover',

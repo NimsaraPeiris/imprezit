@@ -1,27 +1,9 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, easeOut } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Footer } from '../components/Footer';
 import { useState, useEffect, useCallback } from 'react';
 
 const blogs = [
-  {
-    id: 3,
-    title: 'IdeaniX semifinalists by IEEE SLTC',
-    // author: 'John Smith',
-    date: '18.03.2023',
-    image: '/images/achivements/Winners-IDEANIX.jpeg',
-    // avatar: 'https://i.pravatar.cc/150?img=3',
-    link: '',
-  },
-  {
-    id: 4,
-    title: 'IdeaniX winners by IEEE SLTC',
-    // author: 'John Smith',
-    date: '2023',
-    image: '/images/achivements/ideanix.jpg',
-    // avatar: 'https://i.pravatar.cc/150?img=3',
-    link: '',
-  },
   {
     id: 2,
     title: 'IEEE INSL Final Pitch 1st Runner Up',
@@ -29,6 +11,15 @@ const blogs = [
     date: '2024',
     image: '/images/achivements/1st-RUP-INSL.jpeg',
     // avatar: 'https://i.pravatar.cc/150?img=2',
+    link: '',
+  },
+  {
+    id: 7,
+    title: 'IEEE INSL Provincial Competition Winners',
+    // author: 'Alice Johnson',
+    date: '2024',
+    image: '/images/achivements/fp.jpg',
+    // avatar: 'https://i.pravatar.cc/150?img=4',
     link: '',
   },
   {
@@ -40,6 +31,15 @@ const blogs = [
     // avatar: 'https://i.pravatar.cc/150?img=1',
     link: '',
   },
+  {
+    id: 4,
+    title: 'IdeaniX winners by IEEE SLTC',
+    // author: 'John Smith',
+    date: '2023',
+    image: '/images/achivements/ideanix.jpg',
+    // avatar: 'https://i.pravatar.cc/150?img=3',
+    link: '',
+  },  
   {
     id: 6,
     title: '1st runner up at Travel Tech Hackathon',
@@ -59,15 +59,14 @@ const blogs = [
     link: '',
   },
   {
-    id: 7,
-    title: 'IEEE INSL Provincial Competition Winners',
-    // author: 'Alice Johnson',
-    date: '2024',
-    image: '/images/achivements/fp.jpg',
-    // avatar: 'https://i.pravatar.cc/150?img=4',
+    id: 3,
+    title: 'IdeaniX semifinalists by IEEE SLTC',
+    // author: 'John Smith',
+    date: '18.03.2023',
+    image: '/images/achivements/Winners-IDEANIX.jpeg',
+    // avatar: 'https://i.pravatar.cc/150?img=3',
     link: '',
   },
-
 ];
 
 const pillars = [
@@ -103,9 +102,21 @@ const About = () => {
   }, []);
 
   const { scrollY } = useScroll();
-  const heroOpacity = useTransform(scrollY, [0, 300], [1, 0]);
-  const heroTranslateY = useTransform(scrollY, [0, 300], [0, -100]);
-  const heroScale = useTransform(scrollY, [0, 300], [1, 1.5]);
+  const heroOpacity = useTransform(scrollY, 
+    [0, 150, 300], 
+    [1, 0.5, 0],
+    { ease: easeOut }
+  );
+  const heroTranslateY = useTransform(scrollY, 
+    [0, 150, 300], 
+    [0, -25, -50],
+    { ease: easeOut }
+  );
+  const heroScale = useTransform(scrollY, 
+    [0, 150, 300], 
+    [1, 1.1, 1.2],
+    { ease: easeOut }
+  );
 
   const [_, inView] = useInView({
     triggerOnce: true,
@@ -137,27 +148,27 @@ const About = () => {
           opacity: heroOpacity,
           y: heroTranslateY,
           scale: heroScale,
-          transformOrigin: 'center center'
+          transformOrigin: 'center center',
+          willChange: 'transform, opacity'
         }}
-        className="min-h-screen relative flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100"
+        className="min-h-[85vh] sm:min-h-screen relative flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100"
       >
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-        <div className="container mx-auto px-6 py-20 relative z-10">
+        <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 max-w-[95%] sm:max-w-7xl relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-center mx-auto"
+            className="text-center mx-auto max-w-6xl"
           >
-            <h1 className="md:text-8xl text-3xl font-bold text-gray-900 mb-8">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500">
                 Learn More About
                 Imprezit
               </span>
             </h1>
-            <p className="text-xl md:text-2xl lg:text-3xl text-gray-600 mb-8 mx-auto select-none">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 mb-6 mx-auto max-w-3xl px-4">
               Together, we drive innovation to enable success in the digital era.
-
             </p>
           </motion.div>
         </div>
@@ -193,7 +204,7 @@ const About = () => {
                   bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">
                   Overview
                 </h2>
-                <p className="text-lg md:text-xl lg:text-2xl text-gray-800 leading-relaxed">
+                <p className="text-1xl text-justify md:text-xl lg:text-2xl text-gray-800 leading-relaxed">
                   <b>Imprezit</b> is a dynamic team of innovators dedicated to pushing the boundaries
                   of technology and shaping the digital future. Through expertise in development,
                   artificial intelligence, digitization, and consulting, we craft cutting-edge
@@ -253,7 +264,7 @@ const About = () => {
                   <h2 className="items-center text-5xl lg:text-6xl font-bold">Our Mission</h2>
                 </div>
                 <div className="p-6">
-                  <p className="text-xl lg:text-2xl text-gray-600 leading-relaxed font-justify text-justify">
+                  <p className="text-1xl lg:text-2xl text-gray-600 leading-relaxed font-justify text-justify">
                     Driving innovation and shaping a brighter digital future, where technology transforms lives and fosters meaningful connections across the globe.
                   </p>
                 </div>
@@ -291,7 +302,7 @@ const About = () => {
                   <h3 className="text-2xl font-bold lg:text-3xl text-white mb-8 mx-auto select-none">{pillar.title}</h3>
                 </div>
                 <div className="p-8">
-                  <p className="text-xl lg:text-2xl text-gray-600 leading-relaxed">{pillar.description}</p>
+                  <p className="text-1xl lg:text-2xl text-justify text-gray-600 leading-relaxed">{pillar.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -303,7 +314,7 @@ const About = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="py-4"
+          className=""
         >
           <motion.section
             initial={{ opacity: 0, y: 20 }}
@@ -317,14 +328,28 @@ const About = () => {
               </h2>
             </div>
           </motion.section>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-[120rem] mx-auto px-4 sm:px-6 md:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-6 auto-rows-[250px] gap-8 w-full max-w-[120rem] mx-auto px-4 sm:px-6 md:px-8">
             {blogs.map((blog, index) => (
               <motion.div
                 key={blog.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group relative flex overflow-hidden rounded-2xl transition-all duration-300 hover:scale-[1.02] aspect-[4/3]"
+                className={`group relative flex overflow-hidden rounded-2xl transition-all duration-300 hover:scale-[1.02] ${
+                  index === 0 
+                    ? 'md:col-span-4 md:row-span-2' // First item spans 4 columns and 2 rows
+                  : index === 1
+                    ? 'md:col-span-2 md:row-span-2' // Second item spans 2 columns and 2 rows
+                  : index === 2
+                    ? 'md:col-span-3 md:row-span-2' // Third item spans 3 columns and 2 rows
+                  : index === 3
+                    ? 'md:col-span-3 md:row-span-2' // Fourth item spans 3 columns and 2 rows
+                  : index === 4
+                    ? 'md:col-span-2 md:row-span-1' // Fifth item spans 2 columns and 1 row
+                  : index === 5
+                    ? 'md:col-span-2 md:row-span-1' // Sixth item spans 2 columns and 1 row
+                  : 'md:col-span-2 md:row-span-1' // Rest take 2 columns and 1 row
+                }`}
               >
                 <img
                   src={blog.image}
@@ -332,12 +357,21 @@ const About = () => {
                   className="absolute transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 object-cover w-full h-full"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                <div className="relative flex h-full w-full flex-col justify-end p-6 text-white">
-                  <h2 className="mb-2 text-2xl font-bold leading-tight">{blog.title}</h2>
+                <div className="relative flex h-full w-full flex-col justify-end p-4 sm:p-6 text-white">
+                  <h2 className={`mb-2 font-bold leading-tight ${
+                    index === 0 
+                      ? 'text-2xl sm:text-3xl lg:text-4xl' // Larger text for the main highlight
+                      : 'text-lg sm:text-xl lg:text-2xl' // Smaller text for other items
+                  }`}>
+                    {blog.title}
+                  </h2>
                   <div className="flex items-center space-x-2">
-                    <span className="text-xs text-gray-300">{blog.date}</span>
+                    <span className="text-xs sm:text-sm text-gray-300">{blog.date}</span>
                   </div>
                 </div>
+
+                {/* Hover effect border */}
+                <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-white/20 transition-colors duration-300" />
               </motion.div>
             ))}
           </div>

@@ -114,25 +114,25 @@ const Home = () => {
     <div className="pt-0" ref={containerRef}>
       <motion.section
         style={{ opacity: heroOpacity, y: heroTranslateY }}
-        className="relative min-h-screen flex items-center overflow-hidden bg-WHITE"
+        className="relative min-h-[85vh] sm:min-h-screen flex items-center overflow-hidden bg-WHITE"
       >
         <Particles />
 
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 max-w-[95%] sm:max-w-7xl relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             style={{ scale: heroScale }}
             transition={{ duration: 0.8 }}
-            className="text-center"
+            className="text-center max-w-6xl mx-auto"
           >
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-gray-900 mb-6 select-none">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-3 sm:mb-4 md:mb-6 select-none leading-tight">
               Innovate. Transform.{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500">
                 Disrupt.
               </span>
             </h1>
-            <p className="text-xl md:text-2xl lg:text-3xl text-gray-600 mb-8 mx-auto select-none">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 mb-6 mx-auto max-w-3xl px-4">
               Revolutionizing the world with cutting-edge solutions for a digital future.
             </p>
             <motion.div
@@ -141,7 +141,7 @@ const Home = () => {
             >
               <Link
                 to="/services"
-                className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-8 py-3 rounded-full text-lg font-semibold hover:opacity-90 transition-all duration-300 inline-block"
+                className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full text-sm sm:text-base md:text-lg font-semibold hover:opacity-90 transition-all duration-300 inline-block"
               >
                 Get Started
               </Link>
@@ -153,10 +153,10 @@ const Home = () => {
       {/* Company Description Section */}
       <motion.section
         style={{ opacity: descriptionOpacity, y: descriptionTranslateY }}
-        className="py-12 sm:py-16 lg:py-24 bg-gray-50 relative z-10"
+        className="py-8 sm:py-12 lg:py-24 bg-gray-50 relative z-10"
       >
         <motion.div
-          className="container mx-auto px-4 sm:px-6 lg:px-8"
+          className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 max-w-[95%] sm:max-w-7xl"
           whileHover={{ scale: 1.02 }}
           transition={{ duration: 0.3 }}
         >
@@ -241,44 +241,72 @@ const Home = () => {
             </div>
           </motion.section>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-6 gap-6 lg:gap-8 max-w-7xl mx-auto">
             {whatWeCanDo.map((item, index) => (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="relative"
+                className={`relative ${
+                  index === 0 
+                    ? 'lg:col-span-3 lg:row-span-2' 
+                    : index === 1
+                      ? 'lg:col-span-3 lg:row-span-2'
+                      : 'lg:col-span-6 lg:row-span-1'
+                }`}
               >
                 <motion.div
-                  className="aspect-square rounded-3xl flex flex-col items-center justify-center p-6 sm:p-8 lg:p-10 
+                  className={`h-full rounded-3xl flex flex-col items-center justify-center p-6 sm:p-8 lg:p-10 
                             text-center bg-white relative overflow-hidden group shadow-lg hover:shadow-xl 
-                            transition-all duration-300"
+                            transition-all duration-300 ${
+                              index === 2 ? 'lg:flex-row lg:text-left lg:items-center' : ''
+                            }`}
                   whileHover={{ scale: 1.02 }}
                 >
-                  {/* Gradient overlay */}
+                  {/* Enhanced gradient overlay with animation */}
                   <div
-                    className={`absolute inset-0 bg-gradient-to-r ${item.gradient}
-                      opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+                    className={`absolute inset-0 bg-gradient-to-br ${item.gradient}
+                      opacity-0 group-hover:opacity-100 transition-all duration-500
+                      group-hover:backdrop-blur-sm`}
                   />
+                  
+                  {/* Animated background circles */}
+                  <div className="absolute inset-0 overflow-hidden opacity-0 group-hover:opacity-20 transition-opacity duration-500">
+                    <div className="absolute w-32 h-32 rounded-full bg-white/30 blur-2xl -top-16 -left-16 group-hover:scale-150 transition-transform duration-700" />
+                    <div className="absolute w-32 h-32 rounded-full bg-white/30 blur-2xl -bottom-16 -right-16 group-hover:scale-150 transition-transform duration-700" />
+                  </div>
 
-                  {/* Content container */}
-                  <div className="relative z-10 space-y-6">
-                    <span className="text-5xl sm:text-6xl lg:text-7xl block transition-transform duration-300 group-hover:scale-110">
+                  {/* Content container with enhanced animations */}
+                  <div className={`relative z-10 ${
+                    index === 2 ? 'lg:flex lg:items-center lg:gap-8' : 'space-y-6'
+                  }`}>
+                    <motion.span 
+                      className={`text-5xl sm:text-6xl lg:text-7xl block transition-all duration-300
+                        group-hover:scale-110 group-hover:rotate-12 ${
+                          index === 2 ? 'lg:text-8xl' : ''
+                        }`}
+                      whileHover={{ rotate: 12 }}
+                    >
                       {item.icon}
-                    </span>
-                    <div className="space-y-4">
-                      <h3 className={`text-2xl sm:text-3xl font-bold bg-gradient-to-br ${item.gradient} 
-                                  bg-clip-text text-transparent group-hover:text-white transition-colors duration-300`}
+                    </motion.span>
+                    <div className={`space-y-4 ${index === 2 ? 'lg:flex-1' : ''}`}>
+                      <motion.h3 
+                        className={`text-2xl sm:text-3xl font-bold bg-gradient-to-br ${item.gradient} 
+                        bg-clip-text text-transparent group-hover:text-white transition-colors duration-300`}
+                        whileHover={{ scale: 1.05 }}
                       >
                         {item.title}
-                      </h3>
-                      <p className="text-base sm:text-lg text-gray-600 group-hover:text-white/90 
-                                transition-colors duration-300 max-w-[280px] mx-auto">
+                      </motion.h3>
+                      <p className={`text-base sm:text-lg text-gray-600 group-hover:text-white/90 
+                        transition-colors duration-300 ${index === 2 ? 'lg:max-w-3xl' : 'max-w-[280px]'} mx-auto`}>
                         {item.description}
                       </p>
                     </div>
                   </div>
+
+                  {/* Hover effect border */}
+                  <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-white/20 transition-colors duration-300" />
                 </motion.div>
               </motion.div>
             ))}
@@ -314,13 +342,13 @@ const Home = () => {
                   ? 'md:col-span-3 md:row-span-2' // Third item spans 3 columns and 2 rows
                 : index === 3
                   ? 'md:col-span-3 md:row-span-2' // Fourth item spans 3 columns and 2 rows
-                : 'md:col-span-2 md:row-span-1' // Rest take 2 columns and 1 row
+                : 'md:col-span-3 md:row-span-1' // Rest take 2 columns and 1 row
               }`}
             >
               <img
                 src={blog.image}
                 alt={blog.title}
-                className="absolute transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 object-cover w-full h-full"
+                className="absolute transition-all duration-500 group-hover:opacity-100 group-hover:scale-110 object-cover w-full h-full"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
               <div className="relative flex h-full w-full flex-col justify-end p-4 sm:p-6 text-white">

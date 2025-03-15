@@ -77,16 +77,16 @@ export function ExpandableCards({ cards }: { cards: Card[] }) {
                                 ✖
                             </button>
 
-                            <motion.div layoutId={`icon-${active.title}-${id}`} className="text-6xl text-center text-black mb-4">
+                            <motion.div layoutId={`icon-${active.title}-${id}`} className="text-4xl lg:text-6xl text-center text-black mb-8">
                                 {active.icon}
                             </motion.div>
                             <motion.h3
                                 layoutId={`title-${active.title}-${id}`}
-                                className={`text-2xl font-bold text-center mb-2 ${textGradientMap[active.gradient || defaultGradients[cards.findIndex(c => c.title === active.title) % defaultGradients.length]] || 'text-black'}`}
+                                className={`text-2xl lg:text-4xl font-bold text-center mb-2 ${textGradientMap[active.gradient || defaultGradients[cards.findIndex(c => c.title === active.title) % defaultGradients.length]] || 'text-black'}`}
                             >
                                 {active.title}
                             </motion.h3>
-                            <motion.ul className="text-black text-left list-disc text-xl p-6">
+                            <motion.ul className="text-black text-left list-disc text-1xl lg:text-2xl p-2">
                                 {typeof active.content === "function"
                                     ? active.content()
                                     : active.content.split("\n").map((point, index) => (
@@ -137,17 +137,17 @@ export function ExpandableCards({ cards }: { cards: Card[] }) {
                             {/* Content wrapper with z-index */}
                             <div className="relative z-10">
                                 <motion.div layoutId={`icon-${card.title}-${id}`} 
-                                    className="lg:text-7xl text-5xl text-black group-hover:text-white transition-colors duration-700 ease-in-out transform group-hover:scale-110 text-center">
+                                    className="text-4xl sm:text-5xl lg:text-7xl text-black group-hover:text-white transition-colors duration-700 ease-in-out transform group-hover:scale-110 text-center">
                                     {card.icon}
                                 </motion.div>
                                 
                                 <motion.h3
                                     layoutId={`title-${card.title}-${id}`}
-                                    className={`font-bold lg:text-2xl text-xl text-center mt-4 ${textGradientClass} group-hover:text-white transition-all duration-700 ease-in-out transform group-hover:scale-105`}
+                                    className={`font-bold text-lg sm:text-xl lg:text-2xl text-center mt-3 sm:mt-4 ${textGradientClass} group-hover:text-white transition-all duration-700 ease-in-out transform group-hover:scale-105`}
                                 >
                                     {card.title}
                                 </motion.h3>
-                                <p className="text-black text-center mt-4 group-hover:text-white transition-colors duration-700 ease-in-out">
+                                <p className="text-sm sm:text-base lg:text-lg text-black text-center text-justify mt-3 sm:mt-4 group-hover:text-white transition-colors duration-700 ease-in-out">
                                     {card.description}
                                 </p>
                             </div>

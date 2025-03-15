@@ -8,9 +8,9 @@ export const Preloader = ({ onComplete }: { onComplete: () => void }) => {
 
     useEffect(() => {
         let timeoutIds: NodeJS.Timeout[] = [];
-        
+
         // Start first word after a short delay
-        timeoutIds.push(setTimeout(() => setCurrentWord(0), 500));
+        timeoutIds.push(setTimeout(() => setCurrentWord(0), 100));
 
         // Schedule each word change
         words.forEach((_, index) => {
@@ -25,7 +25,7 @@ export const Preloader = ({ onComplete }: { onComplete: () => void }) => {
         timeoutIds.push(setTimeout(() => {
             setCurrentWord(words.length);
             setTimeout(onComplete, 3000);
-        }, words.length * 2500));
+        }, words.length * 2000));
 
         return () => timeoutIds.forEach(clearTimeout);
     }, [onComplete]);
@@ -39,7 +39,7 @@ export const Preloader = ({ onComplete }: { onComplete: () => void }) => {
         >
             <div className="relative flex flex-col items-center justify-center h-screen w-full">
                 {/* Enhanced animated background */}
-                <motion.div 
+                <motion.div
                     className="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-secondary-500/20"
                     animate={{
                         opacity: [0, 0.9, 0],
@@ -59,17 +59,17 @@ export const Preloader = ({ onComplete }: { onComplete: () => void }) => {
                         {currentWord >= 0 && currentWord < words.length && (
                             <motion.div
                                 key={currentWord}
-                                initial={{ 
+                                initial={{
                                     y: 50,
                                     opacity: 0,
                                     scale: 0.5,
                                 }}
-                                animate={{ 
+                                animate={{
                                     y: 0,
                                     opacity: 1,
                                     scale: 1,
                                 }}
-                                exit={{ 
+                                exit={{
                                     y: -50,
                                     opacity: 0,
                                     scale: 0.5,
@@ -82,8 +82,8 @@ export const Preloader = ({ onComplete }: { onComplete: () => void }) => {
                                 }}
                                 className="absolute inset-x-0 flex items-center justify-center z-50"
                             >
-                                <motion.div 
-                                    className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-bold tracking-tight flex justify-center items-center w-full"
+                                <motion.div
+                                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight flex justify-center items-center w-full px-4"
                                 >
                                     {words[currentWord].split('').map((letter, idx) => (
                                         <motion.span
@@ -95,13 +95,13 @@ export const Preloader = ({ onComplete }: { onComplete: () => void }) => {
                                                 delay: idx * 0.05,
                                                 ease: "easeOut"
                                             }}
-                                            className="inline-block text-glow text-white mx-[0.5px] sm:mx-[1px]"
+                                            className="inline-block text-glow text-white mx-[0.15px] sm:mx-[0.25px] md:mx-[0.5px]"
                                             style={{
                                                 display: 'inline-block',
                                                 textShadow: `
-                                                    0 0 20px rgba(255,255,255,0.8),
-                                                    0 0 40px rgba(14,165,233,0.6),
-                                                    0 0 60px rgba(217,70,239,0.4)
+                                                    0 0 10px rgba(255,255,255,0.8),
+                                                    0 0 20px rgba(14,165,233,0.6),
+                                                    0 0 30px rgba(217,70,239,0.4)
                                                 `
                                             }}
                                         >
@@ -116,8 +116,8 @@ export const Preloader = ({ onComplete }: { onComplete: () => void }) => {
 
                 {/* Enhanced Company Name */}
                 {currentWord === words.length && (
-                    <motion.div 
-                        className="mt-8 sm:mt-12 md:mt-16 relative flex justify-center w-full"
+                    <motion.div
+                        className="relative flex items-center justify-center w-full"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                     >
@@ -145,7 +145,7 @@ export const Preloader = ({ onComplete }: { onComplete: () => void }) => {
                                         type: "spring",
                                         stiffness: 200,
                                     }}
-                                    className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold text-white text-glow"
+                                    className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white text-glow"
                                 >
                                     {letter}
                                 </motion.span>

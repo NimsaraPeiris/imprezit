@@ -40,24 +40,24 @@ const Navbar = () => {
           </motion.button>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center justify-center space-x-4 xl:space-x-10">
-            <Link to="/" className="nav-link text-lg xl:text-2xl font-medium">
+          <div className="hidden lg:flex items-center justify-center space-x-4 xl:space-x-8">
+            <Link to="/" className="nav-link text-base xl:text-lg font-medium hover:text-primary-500 transition-colors">
               Home
             </Link>
-            <Link to="/services" className="nav-link text-lg xl:text-2xl font-medium">
+            <Link to="/services" className="nav-link text-base xl:text-lg font-medium hover:text-primary-500 transition-colors">
               Our Services
             </Link>
-            <Link to="/about" className="nav-link text-lg xl:text-2xl font-medium">
+            <Link to="/about" className="nav-link text-base xl:text-lg font-medium hover:text-primary-500 transition-colors">
               About Us
             </Link>
-            <Link to="/research" className="nav-link text-lg xl:text-2xl font-medium">
+            <Link to="/research" className="nav-link text-base xl:text-lg font-medium hover:text-primary-500 transition-colors">
               R & D
             </Link>
           </div>
 
           <Link 
             to="/contact"
-            className="hidden lg:block bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-8 py-3 rounded-lg text-xl font-medium hover:opacity-90 transition-opacity"
+            className="hidden lg:block bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-6 py-2 xl:px-8 xl:py-3 rounded-lg text-base xl:text-lg font-medium hover:opacity-90 transition-all"
           >
             Contact Us
           </Link>

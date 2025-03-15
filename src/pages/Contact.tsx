@@ -91,8 +91,8 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-8 sm:pb-12 bg-gray-50 relative">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div className="min-h-[85vh] sm:min-h-screen pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-8 sm:pb-12 bg-gray-50 relative">
+      <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 max-w-[95%] sm:max-w-7xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -100,16 +100,16 @@ const Contact = () => {
           className="max-w-7xl mx-auto"
         >
           {/* Main grid container */}
-          <div className="grid pt-16 lg:pt-32 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-start lg:items-center">
+          <div className="grid pt-12 sm:pt-16 lg:pt-24 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-start lg:items-center">
             {/* Left Column - Text Content */}
             <div className="relative order-2 lg:order-1">
-              <div className="max-w-xl mx-auto space-y-6 sm:space-y-8">
+              <div className="max-w-xl mx-auto space-y-4 sm:space-y-6">
                 <div className="text-center lg:text-left">
                   <motion.h2
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2, duration: 0.6 }}
-                    className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl mb-2 sm:mb-4 text-gray-900 leading-tight"
+                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-2 sm:mb-4 text-gray-900 leading-tight"
                   >
                     Let's
                   </motion.h2>
@@ -117,10 +117,9 @@ const Contact = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.3, duration: 0.6 }}
-                    className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-8 sm:mb-12 text-gray-900 leading-tight"
+                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 lg:mb-8 text-gray-900 leading-tight"
                   >
                     Connect 
-                    {/* <span className="text-3xl sm:text-4xl">😏😉😃</span> */}
                   </motion.h2>
                 </div>
                 
@@ -128,7 +127,7 @@ const Contact = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.6 }}
-                  className="text-base sm:text-lg lg:text-xl text-gray-800 bg-white shadow-xl border-4 sm:border-8 border-black rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10"
+                  className="text-base sm:text-lg lg:text-xl text-gray-800 bg-white shadow-xl border-2 sm:border-4 border-black rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8"
                 >
                   <b>Ready to unlock your business potential in this digital transformation era? </b><br /><br />
                   With innovative technology solutions, mentoring, and expert guidance,
